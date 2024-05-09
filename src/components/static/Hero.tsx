@@ -26,7 +26,7 @@ const Hero = () => {
 
 
 
-                    <div className="flex justify-center items-center gap-6">
+                    <div className="flex justify-center items-center gap-6 flex-col-reverse md:flex-row">
                         <Link to={'/customer-order'}><BasicButton title='Get Started'/></Link>
                         <Link to={'/agent'}><BasicButton title='Become an Agent' style='border' bgColor='white' textColor='#31373D'/></Link>
                     </div>
