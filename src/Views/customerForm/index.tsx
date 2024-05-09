@@ -14,7 +14,9 @@ const CustomerForm = () => {
         address: '',
         phone: '',
     }
-    const {values, handleChange, resetForm, errors} = useForm(initialState)
+    const {values, handleChange, 
+        // resetForm, 
+        errors} = useForm(initialState)
     
     // const handleSubmit = (e) =>{
     //     e.preventDefault()

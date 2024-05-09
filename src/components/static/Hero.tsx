@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Container } from '../shared/container'
 import { BasicButton } from '../shared/button'
 import { Link } from 'react-router-dom'

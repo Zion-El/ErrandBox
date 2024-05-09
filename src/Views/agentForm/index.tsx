@@ -16,7 +16,9 @@ const AgentForm = () => {
         email:'',
         location:''
     }
-    const {values, handleChange, resetForm, errors} = useForm(initialState)
+    const {values, handleChange, 
+        // resetForm, 
+        errors} = useForm(initialState)
     
     // const handleSubmit = (e) =>{
     //     e.preventDefault()
