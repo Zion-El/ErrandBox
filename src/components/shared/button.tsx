@@ -11,11 +11,11 @@ interface BasicButtonProps{
 }
 
 export const BasicButton = ({title, style, bgColor, textColor, textSize, textWeight, px, py}: BasicButtonProps) => (
-<button className={`${style} font-Int
+<button className={`${style} font-Int w-full
 ${bgColor? bgColor : 'bg-[#052370]'}
 ${textColor? textColor : 'text-[#fff]'}
 ${textWeight? textColor : 'font-[500]'}
-${textSize? {textSize} : 'text-[16px]'}
+${textSize? {textSize} : 'text-[12px] md:text-[16px]'}
 ${px? {px} : 'px-6'}
 ${py? {py} : 'py-2'}
 hover:shadow-md transition-all ease-in-out duration-500 rounded-lg
