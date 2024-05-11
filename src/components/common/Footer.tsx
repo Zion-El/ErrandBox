@@ -7,12 +7,12 @@ const Footer = () => {
     <Container>
         <div className=''>
 
-            <div className='flex items-center w-full py-[2rem]'>
-                <div className='w-[1/3]'>
+            <div className='flex flex-col md:flex-row items-center w-full py-[3rem] justify-between'>
+                <div className='w-full md:w-1/4 flex md:justify-normal justify-center'>
                     <Logo/>
                 </div>
-                <div className='w-[2/3]'>
-                    <p className=' text-[14px] font-Rob'>Balancing work and errands can feel like a daunting task. With ErrandBox, you can <br />kiss the market stress goodbye and enjoy the convenience of seamless shopping.</p>
+                <div className='w-full md:w-2/4'>
+                    <p className=' text-center md:text-left text-[14px] font-Rob md:w-[87%]'>Balancing work and errands can feel like a daunting task. With ErrandBox, you can kiss the market stress goodbye and enjoy the convenience of seamless shopping.</p>
                 </div>
                 
             </div>
@@ -24,7 +24,7 @@ const Footer = () => {
                         {
                             FooterLinks?.map((i, id)=>(
                             <ul key={id}>
-                                <li><Link to={i.url}>{i.name}</Link></li>
+                                <li className='text-[#475569] text-[14px] font-Rob'><Link to={i.url}>{i.name}</Link></li>
                             </ul>                            
                             ))
                         }

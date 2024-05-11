@@ -36,10 +36,10 @@ const NewFaq = () => {
 	return (
 		<section className=" px-4 py-20 w-full flex justify-center items-center ">
 
-			<div className='border-[#ffb999] border border-l-4 border-b-4 rounded-lg p-[3rem]'>
+			<div className='border-[#ffb999] border border-l-4 border-b-4 rounded-lg py-[2rem] px-[1.5rem] md:p-[3rem]'>
 				<div className="relative">
-					<img src="/svg/6_stars.svg" alt="star" className="absolute w-16"/>
-					<h2 className="text-center text-[#052370] text-[24px] md:text-[36px] font-[600] font-int leading-[44px] mb-12">
+					<img src="/svg/6_stars.svg" alt="star" className="hidden md:block absolute w-16"/>
+					<h2 className="text-center text-[#052370] text-[24px] md:text-[36px] font-[600] font-int leading-[30px] md:leading-[44px] mb-12">
 						Got questions? We've got answers!
 					</h2>					
 				</div>

@@ -45,7 +45,7 @@ export const FlipCard = ({title, desc, logoUrl, imgUrl, border, bgColor}: agentC
 
             <p className='text-[#1B1A1A] text-[14px] font-Int font-[500]'>{desc}</p>
 
-            <img className='w-full rounded-[10px] h-[170px]' src={imgUrl} alt="aiit" />
+            <img className='w-full rounded-[10px] h-[140px] md:h-[170px]' src={imgUrl} alt="aiit" />
 
             <div>
                 <Link to={'/'}><BasicButton style='rounded-[10px] border border-[#616161]' bgColor="transparent" textColor="#051235" title='Become an agent >'/></Link>                

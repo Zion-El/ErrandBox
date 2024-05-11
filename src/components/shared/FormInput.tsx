@@ -11,7 +11,7 @@ type Option = {
 };
 
 type FormInputProps = {
-  type: 'text' | 'email' | 'password' | 'select' | 'date';
+  type: 'text' | 'email' | 'password' | 'select' | 'date' | 'number';
   name: string;
   value: string | undefined;
   onChange: (e: ChangeEvent<HTMLInputElement> | any) => void; // the event signature might depend on the input type
@@ -69,6 +69,29 @@ const FormInput: React.FC<FormInputProps> = ({
       );
       break;
 
+    case 'number':
+      inputElement = (
+        <div className="relative">
+          <Label text={label} />
+          <input
+            type="number"
+            name={name}
+            value={value as string}
+            onChange={onChange}
+            placeholder={placeholder}
+            onFocus={() => setShowError(true)}
+            className={`py-[16px] px-[12px] border focus:border-[#FE5000] ${
+              error && showError ? 'border-[red]' : 'border-[#CBD5E1]'
+            } rounded-lg outline-none w-full`}
+          />
+          {error && showError && (
+            <small className="text-[red] absolute bottom-0 left-0 transform translate-y-5 transition-all duration-500 ease-in-out">
+              {error}
+            </small>
+          )}
+        </div>
+      );
+      break;
     case 'email':
       inputElement = (
         <div className="relative">

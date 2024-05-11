@@ -27,8 +27,9 @@ const Hero = () => {
 
 
                     <div className="flex justify-center items-center gap-6 flex-row">
-                        <Link to={'/customer-order'}><BasicButton title='Get Started'/></Link>
-                        <Link to={'/agent'}><BasicButton title='Become an Agent' style='border' bgColor='white' textColor='#31373D'/></Link>
+
+                        <Link to={'/customer-order'} className='w-1/2'><BasicButton title='Get Started'/></Link>
+                        <Link to={'/agent'} className='w-1/2'><BasicButton title='Become an Agent' style='border' bgColor='white' textColor='#31373D'/></Link>
                     </div>
 
                 </div>                
