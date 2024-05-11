@@ -11,20 +11,28 @@ interface FaqItem {
 const faqs: FaqItem[] = [
 
 	{
-		title: "Can I use the same account on multiple devices?",
-		text: "Yes, you can access your TopItupNG account from multiple devices for added convenience.",
+		title: "What Is ErrandBox?",
+		text: "Our platform is designed to streamline the process of connecting individuals with qualified service providers, ensuring a hassle-free experience for our users. By leveraging advanced technology and a comprehensive network of vetted vendors, Errandbox aims to simplify daily tasks and errands, allowing our clients to focus on their priorities while we handle the details with utmost professionalism and efficiency.",
 	},
 	{
-		title: "What should I do if I forget my password?",
-		text: "You can easily reset your password through the app by following the forgot password link.",
+		title: "How Does ErrandBox Work?",
+		text: "1. Visit our website ‘’www.errandboxng.com’’ \n 2. Click on the whatsapp icon and you will be directed to whatsapp to begin a conversation with one of our agents \n 3. Name the service you want from errandbox. \n 4. Curate a list and forward to our customer support agent \n 5. Then we locate the nearest agent to your destination. \n 6. An invoice is sent of the total price for the service rendered \n 7. Once payment is confirmed by our team, the agent begins work",
 	},
 	{
-		title: "How can I contact customer support if I have an issue?",
-		text: "You can reach our customer support team via phone, email, or through the in-app chat feature.",
+		title: "What Happens During An Errand Process?",
+		text: "1. Our Customer Success Team does constant follow ups with the agent designated to a customer from the beginning phase till the completion of service. \n 2. Incases where there are price changes or issues encountered by the agents, our customer success team will be notified to inform our customer to assist them on the next steps to take.",
 	},
 	{
-		title: "Is there a minimum amount required to add funds to my TopItupNG account?",
-		text: "No, there is no minimum amount required to add funds to your TopItupNG account.",
+		title: "Who Is An ErrandBox Agent?",
+		text: "An agent on Errandbox is an individual or entity that acts on behalf of another user or business to perform specific tasks or services. They are responsible for executing assigned jobs, and ensuring the completion of tasks according to the specified requirements and guidelines set by the user or customer. Agents play a crucial role in facilitating various operations and services offered by Errandbox.",
+	},
+	{
+		title: "How To Become An ErrandBox Agent?",
+		text: "Kindly click on this link and fill the document with accurate information.",
+	},
+	{
+		title: "WHAT HAPPENS WHEN AN ORDER IS MISSING OR AN INCORRECT PRODUCT IS IN THE ORDER ?",
+		text: "If you received an incomplete or incorrect order, please immediately contact our customer success agent within an hour of delivery. We&#39;ll get back to you with a resolution as soon as possible.",
 	},
 
 ];

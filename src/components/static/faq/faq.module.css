@@ -1,5 +1,5 @@
 .accordion {
-  /* width: 80%; */
+  width: 90%;
   margin: auto;
   /* margin-bottom: 150px; */
   display: flex;
@@ -20,8 +20,9 @@
   row-gap: 16.38px;
   align-items: center;
   border-radius: 6px;
+  /* width: 100%; */
   /* Add transition properties */
-  transition: border-top 0.3s ease-in, margin-top 0.3s ease-in;
+  transition: all .7s ease-in-out;
 }
 
 .header{
@@ -40,14 +41,14 @@
 .icon {
   font-size: 22px;
   font-weight: 500;
-  /* background-color: #041A8E; */
+  background-color: #FE5000;
   border-radius: 50%;
   width: 43px;
   height: 43px;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* color: #fff; */
+  color: #fff;
 }
 
 .title {
@@ -72,10 +73,9 @@
   font-style: normal;
   font-weight: 400;
   line-height: 157.4%;
-  width: 95%;
   /* 25.971px */
   /* Initial margin-top */
-  transition: max-height 0.2s ease-in, margin-top 0.2s ease-in;
+  transition: all 0.7s ease-in;
 }
 
 
