@@ -40,3 +40,7 @@
 .ant-popover-title{
     display: none !important;
 }
+.errand-type .ant-popover-title{
+    display: block !important;
+    text-align: center !important;
+}

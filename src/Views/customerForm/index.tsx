@@ -6,10 +6,21 @@ import { Container } from "../../components/shared/container";
 import useForm from "../../hooks/useForm";
 import MainLayout from "../../layout/MainLayout";
 import BasicModal from "../../components/shared/modal";
+import { Popover } from "antd";
+import type { RadioChangeEvent } from 'antd';
+import { Radio } from 'antd';
 
 const CustomerForm = () => {
     const [orderCount, setOrderCount] = useState<number>(1);
     const [open, setOpen] = useState<boolean>(false);
+
+    const [value, setValue] = useState(1);
+
+    const onChange = (e: RadioChangeEvent) => {
+      console.log('radio checked', e.target.value);
+      setValue(e.target.value);
+    };
+
 
     const IncreaseOrderCount = () => {
         setOrderCount((prev) => prev + 1);
@@ -88,6 +99,34 @@ const CustomerForm = () => {
         orderForms.push(<OrderForm key={i} />);
     }
 
+
+    const content = (
+        <div className='flex flex-col w-[300px]'>
+            <Radio.Group onChange={onChange} value={value}>
+                <Radio style={{padding:'.5rem 0'}} value={'daily-errands'}>
+                    <div>
+                        <p className="font-Int font-[500] text-[#101928] text-[16px]">Daily Errands</p>
+                        <p className="font-Int font-[400] text-[#667185] text-[14px]">Your Agent goes on errands close to your location</p>
+                    </div>
+                </Radio>
+                <Radio style={{padding:'.5rem 0'}} value={'errand-pickup'}>
+                    <div>
+                        <p className="font-Int font-[500] text-[#101928] text-[16px]">Errand Pickup</p>
+                        <p className="font-Int font-[400] text-[#667185] text-[14px]">Your agent goes on errands to any market location in Lagos</p>
+
+                    </div>
+                </Radio>
+                <Radio style={{padding:'.5rem 0'}} value={'errand-assistant'}>
+                    <div>
+                        <p className="font-Int font-[500] text-[#101928] text-[16px]">Errand Assistance</p>
+                        <p className="font-Int font-[400] text-[#667185] text-[14px]">You are assigned an agent to accompany you to the market</p>
+                    </div>
+                </Radio>
+
+            </Radio.Group>
+        </div>
+      );
+
     return (
         <MainLayout>
             <Container>
@@ -155,16 +194,24 @@ const CustomerForm = () => {
                                 onChange={handleChange}
                                 placeholder={'John'}
                                 error={errors?.errandName}
-                            />                
-                            <FormInput
-                                label={'Errand Type'}
-                                type={'text'}
-                                name={'errandType'} 
-                                value={values.errandType}
-                                onChange={handleChange}
-                                placeholder={'Doe'}
-                                error={errors?.errandType}
-                            />  
+                            />    
+                        <Popover content={content} title="Select Your Errand Type" className="errand-type">
+                            <div>
+                                <FormInput
+                                    label={'Errand Type'}
+                                    type={'text'}
+                                    name={'errandType'} 
+                                    value={values.errandType}
+                                    onChange={handleChange}
+                                    placeholder={'Doe'}
+                                    error={errors?.errandType}
+                                />                                
+                            </div>
+
+
+                        </Popover>
+
+  
                         </div> 
                         {orderForms}
                     </div>
@@ -201,3 +248,5 @@ const CustomerForm = () => {
 };
 
 export default CustomerForm;
+
+
