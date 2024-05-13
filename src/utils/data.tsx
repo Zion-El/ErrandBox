@@ -47,7 +47,7 @@ export const CustomerCardData = [
 ]
 export const AgentCardData = [
     {
-        imgUrl:'/png/cus1.png',
+        imgUrl:'/png/c6.png',
         logoUrl:'/svg/c1.svg',
         title:'Accept Errand Requests',
         desc:"Once you're signed up, you'll receive details for your errands, and you can accept them with a tap of a button.",
@@ -55,7 +55,7 @@ export const AgentCardData = [
         bgColor:'#F4FFFC'
     },
     {
-        imgUrl:'/png/cus2.png',
+        imgUrl:'/png/c5.png',
         logoUrl:'/svg/c2.svg',
         title:'Run and deliver Errands with Efficiency',
         desc:"Take charge of the errands you've accepted and head to the market with a smile!",
@@ -63,7 +63,7 @@ export const AgentCardData = [
         bgColor:'#FFF4EF'
     },
     {
-        imgUrl:'/png/cus3.png',
+        imgUrl:'/png/c6.png',
         logoUrl:'/svg/c3.svg',
         title:'Receive your Reward with a smile',
         desc:"After successfully completing each errand, you'll see your efforts pay off directly in your wallet! ",

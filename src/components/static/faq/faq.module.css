@@ -58,6 +58,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: 110%;
+  max-width: 80%;
 }
 
 .contentBox {
@@ -80,9 +81,8 @@
 
 
 /* OPEN STATE */
-.open {
-  /* border-top: 4px solid#041A8E; */
-  /* margin-top: 24px;  */
+.open .icon{
+  transform: rotateX('45deg');
 }
 
 

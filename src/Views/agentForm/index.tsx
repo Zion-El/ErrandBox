@@ -1,12 +1,20 @@
+import { Checkbox, Popover, Tag } from "antd"
 import { FormHero, FormTag } from "../../components/shared"
 import FormInput from "../../components/shared/FormInput"
 import { AuthButton } from "../../components/shared/button"
 import { Container } from "../../components/shared/container"
 import useForm from "../../hooks/useForm"
 import MainLayout from "../../layout/MainLayout"
+import type { GetProp } from 'antd';
+import { useState } from "react"
+import { Label } from "../../components/shared/typograph"
+import { CheckboxValueType } from "antd/lib/checkbox/Group"
+import ImageUploader from "../../components/shared/ImageUploaded"
 
 
 const AgentForm = () => {
+
+    const [locations, setLocations] = useState< CheckboxValueType[]>([])
 
     const initialState = {
         firstName:'',
@@ -26,6 +34,26 @@ const AgentForm = () => {
     //     const payload = {data: ecnrypted_values.encryptedData}
 
     // }    
+
+    const onChange: GetProp<typeof Checkbox.Group, 'onChange'> = (checkedValues) => {
+        setLocations(checkedValues)
+      };
+
+    const marketOptions = [
+        { label: 'Ikeja', value: 'Ikeja' },
+        { label: 'Lekki', value: 'Lekki' },
+        { label: 'Gbagada', value: 'Gbagada' },
+        { label: 'Maryland', value: 'Maryland' },
+        { label: 'Sangotedo', value: 'Sangotedo' },
+        { label: 'Surulere', value: 'Surulere' },
+      ];
+
+    const marketcontent = (
+        <div className='flex flex-col w-[300px]'>
+            <Checkbox.Group options={marketOptions} onChange={onChange} />
+        </div>
+      );
+
 
   return (
     <MainLayout>
@@ -82,17 +110,54 @@ const AgentForm = () => {
                             onChange={handleChange}
                             placeholder={'John'}
                             error={errors?.email}
-                        />                
-                        <FormInput
-                            label={'Locations'}
-                            type={'text'}
-                            name={'location'} 
-                            value={values.location}
-                            onChange={handleChange}
-                            placeholder={'Doe'}
-                            error={errors?.location}
-                        />       
-                    </div>                 
+                        />     
+
+
+                        <Popover content={marketcontent} title="Select your Service Area Location" className="errand-type">
+                            <div>
+
+                                <div className="relative">
+                                    <Label text={'Market Location'} />
+                                    <div className={`h-[60px] px-[12px] border focus:border-[#FE5000] 'border-[#CBD5E1] rounded-lg outline-none w-full`}>
+                                        {
+                                            locations.length > 0 ? locations?.map((i:any)=><Tag>{i}</Tag>) :''
+                                        }
+                                    </div>
+                   
+                                </div>
+                                   
+                            </div>
+
+
+                        </Popover>
+
+                        {/* <Popover content={marketcontent} title="Select your Service Area Location" className="errand-type">
+                            <div>
+                                <FormInput
+                                    label={'Locations'}
+                                    type={'text'}
+                                    name={'location'} 
+                                    value={values.location}
+                                    onChange={handleChange}
+                                    placeholder={'Doe'}
+                                    error={errors?.location}
+                                /> 
+                            </div>
+
+
+                        </Popover>       */}
+
+
+                    </div>  
+                        <div className="px-5 md:px-10 lg:px-20 w-full flex flex-col md:flex-row justify-between gap-6 items-center mb-10"> 
+                            <div className="w-full lg:w-[45%]">
+                                <ImageUploader/>
+                            </div>
+                            <div className="w-full lg:w-[45%]">
+                                <ImageUploader/>
+                            </div>
+
+                        </div>                                   
                 </div>
 
                 <div className="w-full flex justify-center items-center">

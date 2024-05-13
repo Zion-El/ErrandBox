@@ -17,6 +17,24 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.staff{
+  position: relative;
+}
+.staff-overlay{
+  background-color: rgba(5, 35, 112, 0.9);
+  height: 0px;
+  transition: all .4s ease-in-out;
+}
+.staff-overlay p{
+  display: none;
+  transition: all .4s ease-in-out;
+}
+.staff:hover .staff-overlay{
+  height: 30%;
+}
+.staff:hover .staff-overlay p{
+  display: block;
+}
 /* 
 a {
   font-weight: 500;

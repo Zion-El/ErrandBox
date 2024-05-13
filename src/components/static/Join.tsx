@@ -11,9 +11,8 @@ const Join = () => {
                     <img src="/svg/6_stars.svg" alt="star" className="hidden md:block absolute w-16 top-0 right-16"/>
                     <img src="/svg/smileygirl.svg" alt="star" className="hidden md:block absolute w-16 bottom-0 right-0"/>
 
-                        <div>
-                            <p className='text-center font-[500] font-Int text-[18px] lg:text-[30px]'>Join Thousands of Users Who Have</p>                       
-                            <p className='text-center font-[500] font-Int text-[18px] lg:text-[30px]'>Discovered the Joy of Errand Freedom!</p>                             
+                        <div className='lg:w-[80%]'>
+                            <p className='text-center font-[500] font-Int text-[20px] lg:text-[30px] '>Join Thousands of Users Who Have Discovered the Joy of Errand Freedom!</p>                             
                         </div>
                      
   

@@ -43,7 +43,7 @@ const NewFaq = () => {
 	const [curOpen, SetCurOpen] = useState<number | null>(null);
 	return (
 		<section className=" px-4 py-20 w-full flex justify-center items-center  ">
-			<div className="w-[70%]">
+			<div className="w-full lg:w-[70%]">
 				<div className='border-[#ffb999] border border-l-4 border-b-4 rounded-lg py-[2rem] px-[1.5rem] md:p-[3rem] w-full'>
 					<div className="relative">
 						<img src="/svg/6_stars.svg" alt="star" className="hidden md:block absolute w-16"/>
@@ -93,7 +93,8 @@ const AccordionItem: React.FC<{
 			{/* <p className={styles.number}>{numb < 9 ? `0${numb + 1}` : numb + 1}</p> */}
 			<div className={styles.header}>
 			<p className={styles.title}>{title}</p>
-			<p className={styles.icon}>{isOpen ? "-" : "+"}</p>			
+			<p className={styles.icon}>+</p>			
+			{/* <p className={styles.icon}>{isOpen ? "-" : "+"}</p>			 */}
 			</div>
 
 			<div className={styles.contentBox}>{isOpen && <div>{text}</div>}</div>

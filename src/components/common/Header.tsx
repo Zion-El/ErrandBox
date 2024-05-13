@@ -8,7 +8,10 @@ const Header = () => {
   return (
     <div className='flex justify-between items-center border py-3 rounded-lg shadow-md px-2'>
         <Link to={'/'}><Logo/></Link>
-        <DropMenu/>
+        <div className='hidden md:block'>
+          <DropMenu/>
+        </div>
+        
         
     </div>
   )
@@ -26,7 +29,7 @@ const content = (
 );
 
 const DropMenu: React.FC = () => (
-  <Popover content={content} title="Title">
+  <Popover content={content} className='nav' title="Title">
     <div>
       <BasicButton title='Get Started'/>      
     </div>

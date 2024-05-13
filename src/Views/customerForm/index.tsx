@@ -10,16 +10,48 @@ import { Popover } from "antd";
 import type { RadioChangeEvent } from 'antd';
 import { Radio } from 'antd';
 
+const initialState = {
+        firstName: "",
+        lastName: "",
+        address: "",
+        phone: "",
+        errandName: "",
+        errandType: "",
+        itemCount: "",
+        itemType: "",
+        itemCost: "",
+        market_loc:''
+    };
+
+
 const CustomerForm = () => {
     const [orderCount, setOrderCount] = useState<number>(1);
     const [open, setOpen] = useState<boolean>(false);
+    const { values, handleChange, errors } = useForm(initialState);
 
     const [value, setValue] = useState(1);
 
-    const onChange = (e: RadioChangeEvent) => {
-      console.log('radio checked', e.target.value);
-      setValue(e.target.value);
-    };
+    const onTypeChange = (e: RadioChangeEvent) => {
+        setValue(e.target.value); // Update the state with the selected value
+        console.log(e.target)
+        handleChange({ // Call handleChange with a synthetic event object
+          target: {
+            name: 'errandType', // Name of the input field you want to update
+            value: e.target.value // Value of the selected radio button
+          }
+        });
+      };
+    const onLocChange = (e: RadioChangeEvent) => {
+        setValue(e.target.value); // Update the state with the selected value
+        console.log(e.target)
+        handleChange({ // Call handleChange with a synthetic event object
+          target: {
+            name: 'market_loc', // Name of the input field you want to update
+            value: e.target.value // Value of the selected radio button
+          }
+        });
+      };
+      
 
 
     const IncreaseOrderCount = () => {
@@ -33,18 +65,8 @@ const CustomerForm = () => {
         e.preventDefault();
     }
     
-    const initialState = {
-        firstName: "",
-        lastName: "",
-        address: "",
-        phone: "",
-        errandName: "",
-        errandType: "",
-        itemCount: "",
-        itemType: "",
-        itemCost: "",
-    };
-    const { values, handleChange, errors } = useForm(initialState);
+
+
 
     const OrderForm = () => {
         return (
@@ -100,9 +122,34 @@ const CustomerForm = () => {
     }
 
 
+    const marketOptions = [
+        { label: 'Ikeja', value: 'Ikeja' },
+        { label: 'Lekki', value: 'Lekki' },
+        { label: 'Gbagada', value: 'Gbagada' },
+        { label: 'Maryland', value: 'Maryland' },
+        { label: 'Sangotedo', value: 'Sangotedo' },
+        { label: 'Surulere', value: 'Surulere' },
+      ];
+
+    const marketcontent = (
+        <div className='flex flex-col w-[300px]'>
+            <Radio.Group onChange={onLocChange} name="market_loc" value={value}>
+                {
+                    marketOptions?.map((i:any)=>
+                        <Radio style={{padding:'.5rem 0', borderBottom:'1px solid #F3EEEE', width:'100%', marginBottom:'.5rem'}} value={i.value}>
+                            <div className="">
+                                <p className="inline font-Int font-[400]  text-[14px]">{i.label}</p>
+                            </div>
+                        </Radio>                    
+                    )
+                }
+
+            </Radio.Group>
+        </div>
+      );
     const content = (
         <div className='flex flex-col w-[300px]'>
-            <Radio.Group onChange={onChange} value={value}>
+            <Radio.Group onChange={onTypeChange} value={value} name="errandType">
                 <Radio style={{padding:'.5rem 0'}} value={'daily-errands'}>
                     <div>
                         <p className="font-Int font-[500] text-[#101928] text-[16px]">Daily Errands</p>
@@ -210,6 +257,21 @@ const CustomerForm = () => {
 
 
                         </Popover>
+                        <Popover content={marketcontent} title="Select your Service Area Location" className="errand-type">
+                            <div>
+                                <FormInput
+                                    label={'Locations'}
+                                    type={'text'}
+                                    name={'market_loc'} 
+                                    value={values.market_loc}
+                                    onChange={handleChange}
+                                    placeholder={'Doe'}
+                                    error={errors?.market_loc}
+                                /> 
+                            </div>
+
+
+                        </Popover>      
 
   
                         </div> 
