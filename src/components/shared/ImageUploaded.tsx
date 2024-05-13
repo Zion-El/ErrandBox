@@ -73,7 +73,10 @@ const ImageUploader: React.FC = () => {
             style={{ display: 'none' }}
             id="fileInput"
           />
-          <label htmlFor="fileInput"><BasicButton title='Browse File' style='' bgColor='#FE5000' textColor='#fff'/></label>
+          <div className='w-full flex justify-center '>
+            <label htmlFor="fileInput" className='bg-[#FE5000] text-[#fff] rounded-lg font-[500] px-8 py-2'>Browse File</label>
+          </div>
+          
         </div>
       )}
     </div>
