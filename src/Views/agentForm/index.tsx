@@ -28,13 +28,6 @@ const AgentForm = () => {
         // resetForm, 
         errors} = useForm(initialState)
     
-    // const handleSubmit = (e) =>{
-    //     e.preventDefault()
-        
-    //     const payload = {data: ecnrypted_values.encryptedData}
-
-    // }    
-
     const onChange: GetProp<typeof Checkbox.Group, 'onChange'> = (checkedValues) => {
         setLocations(checkedValues)
       };

@@ -58,10 +58,50 @@ const CustomerForm = () => {
     const DecreaseOrderCount = () => {
         setOrderCount((prev) => prev - 1);
     };
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const AuthToken = ''
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-    }
+    
+        const requestData = {
+            firstName: values.firstName,
+            lastName: values.lastName,
+            address: values.address,
+            phone: values.phone,
+            errandName: values.errandName,
+            errandType: values.errandType,
+            itemCount: values.itemCount,
+            itemType: values.itemType,
+            itemCost: values.itemCost,
+            market_loc: values.market_loc,
+        };
+    
+        try {
+            const response = await fetch('/web_page_mark/list', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${AuthToken}`, // Include the token here
+                },
+                body: JSON.stringify(requestData),
+            });
+    
+            if (response.status === 403) {
+                throw new Error('Permission error: You do not have the required permissions to perform this action.');
+            }
+    
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+    
+            const data = await response.json();
+            console.log('Success:', data);
+            // Handle success (e.g., display success message, navigate, etc.)
+        } catch (error) {
+            console.error('Error:', error);
+            // Handle error (e.g., display error message)
+        }
+    };
+    
     
 
 
@@ -133,8 +173,8 @@ const CustomerForm = () => {
         <div className='flex flex-col w-[300px]'>
             <Radio.Group onChange={onLocChange} name="market_loc" value={value}>
                 {
-                    marketOptions?.map((i:any)=>
-                        <Radio style={{padding:'.5rem 0', borderBottom:'1px solid #F3EEEE', width:'100%', marginBottom:'.5rem'}} value={i.value}>
+                    marketOptions?.map((i:any, id:any)=>
+                        <Radio key={id} style={{padding:'.5rem 0', borderBottom:'1px solid #F3EEEE', width:'100%', marginBottom:'.5rem'}} value={i.value}>
                             <div className="">
                                 <p className="inline font-Int font-[400]  text-[14px]">{i.label}</p>
                             </div>
