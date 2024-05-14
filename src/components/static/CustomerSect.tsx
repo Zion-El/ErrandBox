@@ -16,6 +16,7 @@ const CustomerSect = () => {
             imgUrl={i.imgUrl}
             border={i.border}
             bgColor={i.bgColor}
+            btnText='Start an Errand'
           />)
         }
       </div>    

@@ -1,3 +1,4 @@
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa"
 interface LogoProps{
     size?: number
 }
@@ -16,6 +17,24 @@ export const FooterLinks = [
     {
         name: 'Contact',
         url: '',
+    },
+]
+export const FooterSocialLinks = [
+    {
+        name: <FaFacebookF/>,
+        url: 'https://web.facebook.com/profile.php?id=61550510544894',
+    },
+    {
+        name: <FaLinkedin/>,
+        url: 'https://web.facebook.com/profile.php?id=61550510544894',
+    },
+    {
+        name: <FaTwitter/>,
+        url: 'https://twitter.com/errandbox_ng',
+    },
+    {
+        name: <FaInstagram/>,
+        url: 'https://www.instagram.com/errandbox_ng/',
     },
 ]
 

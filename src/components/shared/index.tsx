@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { BasicButton } from "./button";
+import { FaChevronRight } from "react-icons/fa6";
 
 interface FormTagProps{
     title:string;
@@ -12,7 +13,8 @@ export interface agentCardProps{
     logoUrl: string;
     imgUrl: string; 
     border: string; 
-    bgColor: string; 
+    bgColor: string;  
+    btnText: string;  
   }
 
 export const FormTag = ({title, desc}:FormTagProps) =>(
@@ -22,7 +24,9 @@ export const FormTag = ({title, desc}:FormTagProps) =>(
     </div>
 )
 export const FormHero = () =>(
-    <div className="w-full min-h-[70vh] p-10 flex justify-center items-center">
+    <div className="w-full min-h-[70vh] p-10 flex justify-center items-center relative">
+        <img src="/svg/doughnut.svg" className='absolute top-[20%] right-0 md:right-[25%] md:top-[30%] w-[25px] md:w-[40px]' alt="" />
+        <img src="/svg/loveStar.svg" className='absolute bottom-[15%] left-0 md:left-[20%]  md:w-[80px]' alt="" />
         <div className="space-y-8">
             <div className="relative">
                 <img src="/png/box.png" alt="box" className="absolute top-[-30px] w-[500px] h-[150px]" />
@@ -35,7 +39,7 @@ export const FormHero = () =>(
     </div>
 )
 
-export const FlipCard = ({title, desc, logoUrl, imgUrl, border, bgColor}: agentCardProps) =>{
+export const FlipCard = ({title, desc, logoUrl, imgUrl, border, bgColor, btnText}: agentCardProps) =>{
     return(
         <div style={{backgroundColor:bgColor}} className={`${border} flex flex-col justify-between gap-8 min-w-[300px] lg:w-[30%] border-[#FE5000] rounded-[6px] p-4`}>
             <div className=' flex justify-between items-center'>
@@ -47,8 +51,9 @@ export const FlipCard = ({title, desc, logoUrl, imgUrl, border, bgColor}: agentC
 
             <img className='w-full rounded-[10px] h-[170px]' src={imgUrl} alt="aiit" />
 
-            <div className="w-1/2">
-                <Link to={'/'}><BasicButton style=' border border-[#616161]' px="px-3" radius="rounded-[10px]" bgColor="transparent" textColor="#051235" title='Become an agent >'/></Link>                
+            <div className="w-[60%]" >
+                <Link to={'/'} className="border border-[#616161] px-3 rounded-[16px] py-2 text-[14px] hover:bg-[#FE5000] hover:border-none hover:shadow-lg hover:text-[white] transition-all duration-500 ease-in-out text-[#051235] font-Int font-[500] flex items-center gap-3">{btnText} <span className="inline"><FaChevronRight/></span> </Link>                
+                {/* <Link to={'/'}><BasicButton style=' border border-[#616161]' px="px-3" radius="rounded-[10px]" bgColor="transparent" textColor="#051235" title='Become an agent >'/></Link>                 */}
             </div>
 
 

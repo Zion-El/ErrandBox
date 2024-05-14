@@ -185,7 +185,7 @@ const CustomerForm = () => {
                             desc="This would help us assign you to an Agent easily"
                         />
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12 px-5 md:px-10 lg:px-20 py-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12  md:px-10 lg:px-20 py-8">
                             <FormInput
                                 label={"First name"}
                                 type={"text"}
@@ -232,7 +232,7 @@ const CustomerForm = () => {
                     </div>
 
                     <div className="space-y-8">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12 px-5 md:px-10 lg:px-20 py-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12  md:px-10 lg:px-20 py-8">
                             <FormInput
                                 label={'Errand name'}
                                 type={'text'}

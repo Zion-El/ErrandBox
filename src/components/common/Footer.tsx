@@ -1,6 +1,7 @@
-import { FooterLinks, Logo } from '../../utils/data'
+import { FooterLinks, FooterSocialLinks, Logo } from '../../utils/data'
 import { Link } from 'react-router-dom'
 import { Container } from '../shared/container'
+
 
 const Footer = () => {
     const year =  new Date().getFullYear()
@@ -18,12 +19,22 @@ const Footer = () => {
                 
             </div>
 
-            <div className='flex flex-col lg:flex-row justify-center lg:justify-between items-start lg:items-center border-t py-4'>
+            <div className='flex flex-col lg:flex-row justify-center lg:justify-between items-start lg:items-center border-t py-4 gap-3'>
                 <span className='text-[#475569] text-[14px] font-Rob'>@ {year} ErrandBox Ltd. All rights reserved</span>
-                <div>
+                <div className='lg:flex items-center gap-4 space-y-3 lg:space-y-0'>
                     <div className='flex items-center gap-4'>
                         {
                             FooterLinks?.map((i, id)=>(
+                            <ul key={id}>
+                                <li className='text-[#475569] text-[14px] font-Rob'><Link to={i.url}>{i.name}</Link></li>
+                            </ul>                            
+                            ))
+                        }
+
+                    </div>
+                    <div className='flex items-center gap-4'>
+                        {
+                            FooterSocialLinks?.map((i, id)=>(
                             <ul key={id}>
                                 <li className='text-[#475569] text-[14px] font-Rob'><Link to={i.url}>{i.name}</Link></li>
                             </ul>                            

@@ -65,7 +65,7 @@ const AgentForm = () => {
                 <div>
                     <FormTag title="Personal Details" desc="This would help us assign an Errand to you. Ensure all details are correct."/>   
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12 px-5 md:px-10 lg:px-20 py-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12  md:px-10 lg:px-20 py-8">
                         <FormInput
                             label={'First name'}
                             type={'text'}
@@ -149,7 +149,7 @@ const AgentForm = () => {
 
 
                     </div>  
-                        <div className="px-5 md:px-10 lg:px-20 w-full flex flex-col md:flex-row justify-between gap-6 items-center mb-10"> 
+                        <div className=" md:px-10 lg:px-20 w-full flex flex-col md:flex-row justify-between gap-6 items-center mb-10"> 
                             <div className="w-full lg:w-[45%]">
                                 <ImageUploader id="ninUpload" title="NIN"/>
                             </div>

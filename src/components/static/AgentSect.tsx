@@ -17,6 +17,7 @@ const AgentSect = () => {
             imgUrl={i.imgUrl}
             border={i.border}
             bgColor={i.bgColor}
+            btnText='Become an Agent'
           />)
         }
       </div>    

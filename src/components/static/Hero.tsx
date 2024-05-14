@@ -9,7 +9,7 @@ const Hero = () => {
         <Container>
             <div className='w-full flex justify-center items-center min-h-screen relative'>
 
-                <img src="/png/smile.png" className='absolute left-0 md:right-[20%] w-[25px] md:w-[60px]' alt="" />
+                <img src="/png/smile.png" className='absolute left-0 md:left-[80%] w-[25px] md:w-[60px]' alt="" />
                 <img src="/svg/doughnut.svg" className='absolute bottom-[30%] left-[-20px] md:left-[25%] w-[25px] md:w-[40px]' alt="" />
                 <img src="/svg/loveStar.svg" className='absolute top-[15%] right-0 md:left-[20%]  md:w-[80px]' alt="" />
 
