@@ -7,11 +7,21 @@ const Hero = () => {
   return (
     <div style={{backgroundImage:'url(/svg/hero-pattern.svg)'}} className=' '>
         <Container>
-            <div className='w-full flex justify-center items-center min-h-screen'>
+            <div className='w-full flex justify-center items-center min-h-screen relative'>
+
+                <img src="/png/smile.png" className='absolute left-0 md:right-[20%] w-[25px] md:w-[60px]' alt="" />
+                <img src="/svg/doughnut.svg" className='absolute bottom-[30%] left-[-20px] md:left-[25%] w-[25px] md:w-[40px]' alt="" />
+                <img src="/svg/loveStar.svg" className='absolute top-[15%] right-0 md:left-[20%]  md:w-[80px]' alt="" />
+
+
                 <div className='md:w-[70%] lg:w-[50%] space-y-8 bg-white py-[3rem] rounded px-[1rem]'>
 
                     <div className='flex justify-center items-center'>
-                        <span className='text-[14px] text-[#1D1E20] text-center font-[400]'>Why Errandbox?</span>
+                        <div className='flex justify-center items-center bg-[#FFF7F3] rounded-xl py-1 px-3 gap-6'>
+                            <div className='rounded-xl bg-[#fe5000] h-[23px] w-[48px]'></div>
+                            <span className='text-[12px] text-[#1D1E20] text-center font-[400]'>Why Errandbox?</span>
+                        </div>
+                        
                     </div>
 
                     <div>
@@ -26,10 +36,10 @@ const Hero = () => {
 
 
 
-                    <div className="flex justify-center items-center gap-6 flex-row">
+                    <div className="flex justify-center items-center gap-4 md:gap-6 flex-col md:flex-row">
 
-                        <Link to={'/customer-order'} className='w-1/2'><BasicButton title='Get Started'/></Link>
-                        <Link to={'/agent'} className='w-1/2'><BasicButton title='Become an Agent' style='border' bgColor='white' textColor='#31373D'/></Link>
+                        <Link to={'/customer-order'} className='w-[60%] md:w-1/2'><BasicButton title='Get Started'/></Link>
+                        <Link to={'/agent'} className='w-[60%] md:w-1/2'><BasicButton title='Become an Agent' style='border' bgColor='white' textColor='#31373D'/></Link>
                     </div>
 
                 </div>                

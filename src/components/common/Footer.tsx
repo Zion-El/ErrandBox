@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Container } from '../shared/container'
 
 const Footer = () => {
+    const year =  new Date().getFullYear()
   return (
     <Container>
         <div className=''>
@@ -18,7 +19,7 @@ const Footer = () => {
             </div>
 
             <div className='flex flex-col lg:flex-row justify-center lg:justify-between items-start lg:items-center border-t py-4'>
-                <span className='text-[#475569] text-[14px] font-Rob'>@ 2022 ErrandBox Ltd. All rights reserved</span>
+                <span className='text-[#475569] text-[14px] font-Rob'>@ {year} ErrandBox Ltd. All rights reserved</span>
                 <div>
                     <div className='flex items-center gap-4'>
                         {
