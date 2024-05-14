@@ -23,9 +23,9 @@ const CustomerSect = () => {
       </div>    
 
       <div className='bg-[#CDD3E2] p-4 flex md:justify-center items-center h-[470px] lg:h-[450px] rounded-lg flex-col relative mt-[2.5rem] lg:mt-[6rem] gap-6 z-[-1]'>
-        <div className='hidden lg:block'>
-          <Pill style='top-0 lg:top-14 left-10 text-black' title={'Grocery Shopping'} bgColor={'#FFDCCC'}/>
-          <Pill style='left-[8rem] top-[13rem] text-black' title={'Food Shopping'} bgColor={'#CDECE3'}/>
+        <div className='hidden md:block'>
+          <Pill style='top-[3rem] lg:top-14 left-10 text-black' title={'Grocery Shopping'} bgColor={'#FFDCCC'}/>
+          <Pill style='left-[6rem] lg:left-[8rem] top-[13rem] text-black' title={'Food Shopping'} bgColor={'#CDECE3'}/>
           <Pill style='bottom-14 left-[12rem] text-white' title={'Gift Procurement'} bgColor={'#FE5000'}/>
           <Pill style='top-[6rem] right-[8rem] text-white' title={'Bridal Accessories'} bgColor={'#FE5000'}/>
           <Pill style='bottom-[6rem] right-[8rem] text-black' title={'Office Lunch'} bgColor={'#CDECE3'}/>          
@@ -34,11 +34,11 @@ const CustomerSect = () => {
 
         <img src='/svg/world.svg' alt='world' className='absolute bottom-0 left-0 lg:w-[500px] z-[-1]' />
         <div className='flex w-full justify-center'>
-          <p className='text-center font-[600] lg:w-[50%] lg:font-[500] font-Int text-[18px] lg:text-[30px] leading-[24px] md:leading-[36px]'>From Grocery Runs to Gift Shopping, We've Got You Covered!</p>
+          <p className='text-center font-[600] md:w-[70%] lg:w-[50%] lg:font-[500] font-Int text-[18px] lg:text-[30px] leading-[24px] md:leading-[36px]'>From Grocery Runs to Gift Shopping, We've Got You Covered!</p>
         </div>
         <Link to={'/customer-order'}><BasicButton title='Get Started'/></Link>
 
-        <div className='relative lg:hidden w-full h-full'>
+        <div className='relative md:hidden w-full h-full'>
           <Pill style='top-14 right-0 text-black w-[150px]' title={'Grocery Shopping'} bgColor={'#FFDCCC'}/>
           <Pill style='bottom-0 right-0 text-black  w-[150px]' title={'Food Shopping'} bgColor={'#CDECE3'}/>
           <Pill style='top-[11rem] left-16 text-white  w-[150px]' title={'Gift Procurement'} bgColor={'#FE5000'}/>
@@ -118,7 +118,7 @@ interface overlayProps{
 
 const Pill = ({title, bgColor, style}:pillProps) =>{
   return(
-    <button style={{backgroundColor:bgColor}} className={` border-2 font-[600] rounded-md border-[#052370] absolute p-3 font-Int text-[12px] md:text-[16px] ${style}`}>{title}</button>
+    <button style={{backgroundColor:bgColor}} className={` border-2 font-[600] rounded-md md:opacity-80 lg:opacity-100 border-[#052370] absolute p-3 font-Int text-[12px] md:text-[16px] ${style}`}>{title}</button>
   )
 }
 export const Overlay = ({title, position}:overlayProps) =>{
