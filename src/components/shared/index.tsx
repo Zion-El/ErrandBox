@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { BasicButton } from "./button";
 import { FaChevronRight } from "react-icons/fa6";
 
 interface FormTagProps{
@@ -28,9 +27,10 @@ export const FormHero = () =>(
     <div className="w-full min-h-[70vh] p-10 flex justify-center items-center relative">
         <img src="/svg/doughnut.svg" className='absolute top-[20%] right-0 md:right-[25%] md:top-[30%] w-[25px] md:w-[40px]' alt="" />
         <img src="/svg/loveStar.svg" className='absolute bottom-[15%] left-0 md:left-[20%]  md:w-[80px]' alt="" />
-        <div className="space-y-8">
-            <div className="relative">
-                <img src="/png/box.png" alt="box" className="absolute top-[-30px] w-[500px] h-[150px]" />
+        <div className="space-y-8 w-full relative">
+            <img src="/png/box.png" alt="box" className="absolute top-5  w-[320px] md:right-[27%] lg:right-[37.5%]" />
+            <div className=" w-full">
+                
                 <p className="text-center font-[800] font-Int text-[32px] lg:text-[40px] leading-[45px] text-[#221F20]">Get Started<br/>with <span className="text-[#052370]">ErandBox</span></p>                
             </div>
 

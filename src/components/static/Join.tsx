@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { DropMenu } from '../common/Header'
-import { BasicButton } from '../shared/button'
 import { Container } from '../shared/container'
 
 const Join = () => {

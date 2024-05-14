@@ -26,7 +26,7 @@ const Hero = () => {
 
                     <div>
                         <div>
-                            <h2 className='text-[28px] md:text-[40px] lg:text-[70px] text-[#1D1E20] text-center font-[800] lg:leading-[60px]'>We've redefined</h2>
+                            <h2 className='text-[28px] md:text-[40px] lg:text-[65px] text-[#1D1E20] text-center font-[800] lg:leading-[60px]'>We've redefined</h2>
                             <p className='text-[40px] lg:text-[70px] text-[#052370] text-center font-[800] '>Convenience</p>
                         </div>
 

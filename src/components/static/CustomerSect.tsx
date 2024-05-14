@@ -56,7 +56,7 @@ const CustomerSect = () => {
           <div className='border-b-[3px] border-l-[3px] rounded-[14px] border-[#FE5000] staff'><img src="/png/staff2.png" alt="staff" /><Overlay title={'Faith Ugbeshe'} position='C0-Founder & COO'/> </div>
           <div className='col-span-2 '>
             <h1 className=' font-[600] lg:w-[50%] lg:font-[500] font-Int text-[18px] lg:text-[24px] leading-[24px] md:leading-[36px]'>Meet the Heroes behind Errandbox!</h1>
-            <p className='text-left font-[400] font-Int md:w-[70%] text-[16px]'>We’re a diverse, close-knit team on an adventure to build something enduring, while learning something new, every day.</p>
+            <p className='text-left font-[400] font-Int md:w-[75%] text-[16px]'>We’re a diverse, close-knit team on an adventure to build something enduring, while learning something new, every day.</p>
           </div>
           <div className='flex items-end'><img className='w-[100px]' src="/svg/ghost.svg" alt="staff" /></div>
           <div></div>
