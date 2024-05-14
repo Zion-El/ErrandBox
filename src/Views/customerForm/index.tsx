@@ -32,22 +32,20 @@ const CustomerForm = () => {
     const [value, setValue] = useState(1);
 
     const onTypeChange = (e: RadioChangeEvent) => {
-        setValue(e.target.value); // Update the state with the selected value
-        console.log(e.target)
-        handleChange({ // Call handleChange with a synthetic event object
+        setValue(e.target.value); 
+        handleChange({ 
           target: {
-            name: 'errandType', // Name of the input field you want to update
-            value: e.target.value // Value of the selected radio button
+            name: 'errandType', 
+            value: e.target.value 
           }
         });
       };
     const onLocChange = (e: RadioChangeEvent) => {
-        setValue(e.target.value); // Update the state with the selected value
-        console.log(e.target)
-        handleChange({ // Call handleChange with a synthetic event object
+        setValue(e.target.value); 
+        handleChange({ 
           target: {
-            name: 'market_loc', // Name of the input field you want to update
-            value: e.target.value // Value of the selected radio button
+            name: 'market_loc', 
+            value: e.target.value 
           }
         });
       };
@@ -115,7 +113,7 @@ const CustomerForm = () => {
         );
     };
 
-    // Dynamically render multiple OrderForm components based on orderCount
+    
     const orderForms = [];
     for (let i = 0; i < orderCount; i++) {
         orderForms.push(<OrderForm key={i} />);
@@ -175,9 +173,10 @@ const CustomerForm = () => {
       );
 
     return (
-        <MainLayout>
+        <MainLayout>                
+            <FormHero />
             <Container>
-                <FormHero />
+
                 <form onSubmit={handleSubmit}>
                     <div>
                         <FormTag

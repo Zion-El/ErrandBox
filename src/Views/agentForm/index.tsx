@@ -57,9 +57,9 @@ const AgentForm = () => {
 
   return (
     <MainLayout>
-
+        <FormHero/>
         <Container>
-            <FormHero/>
+            
             <form >
 
                 <div>
