@@ -15,6 +15,7 @@ export interface agentCardProps{
     border: string; 
     bgColor: string;  
     btnText: string;  
+    url: string;  
   }
 
 export const FormTag = ({title, desc}:FormTagProps) =>(
@@ -39,9 +40,9 @@ export const FormHero = () =>(
     </div>
 )
 
-export const FlipCard = ({title, desc, logoUrl, imgUrl, border, bgColor, btnText}: agentCardProps) =>{
+export const FlipCard = ({title, desc, logoUrl, imgUrl, border, bgColor, btnText, url}: agentCardProps) =>{
     return(
-        <div style={{backgroundColor:bgColor}} className={`${border} flex flex-col justify-between gap-8 min-w-[300px] lg:w-[30%] border-[#FE5000] rounded-[6px] p-4`}>
+        <div style={{backgroundColor:bgColor}} className={`${border} flex flex-col justify-between gap-8 min-w-[300px] md:w-[350px] lg:w-[30%] border-[#FE5000] rounded-[6px] p-4`}>
             <div className=' flex justify-between items-center'>
                 <p className='text-[#1B1A1A] text-[20px] lg:text-[22px] w-[80%] font-Int font-[600] leading-[28px]'>{title}</p>
                 <img src={logoUrl} className='w-[38px] h-[38px]' alt="aiit" />
@@ -51,8 +52,8 @@ export const FlipCard = ({title, desc, logoUrl, imgUrl, border, bgColor, btnText
 
             <img className='w-full rounded-[10px] h-[170px]' src={imgUrl} alt="aiit" />
 
-            <div className="w-[60%]" >
-                <Link to={'/'} className="border border-[#616161] px-3 rounded-[16px] py-2 text-[14px] hover:bg-[#FE5000] hover:border-none hover:shadow-lg hover:text-[white] transition-all duration-500 ease-in-out text-[#051235] font-Int font-[500] flex items-center gap-3">{btnText} <span className="inline"><FaChevronRight/></span> </Link>                
+            <div className="w-[60%] md:w-[70%] lg:w-[60%]" >
+                <Link to={url} className="border border-[#616161] px-3 rounded-[16px] py-2 text-[14px] hover:bg-[#FE5000] hover:border-none hover:shadow-lg hover:text-[white] transition-all duration-500 ease-in-out text-[#051235] font-Int font-[500] flex items-center gap-3">{btnText} <span className="inline"><FaChevronRight/></span> </Link>                
                 {/* <Link to={'/'}><BasicButton style=' border border-[#616161]' px="px-3" radius="rounded-[10px]" bgColor="transparent" textColor="#051235" title='Become an agent >'/></Link>                 */}
             </div>
 

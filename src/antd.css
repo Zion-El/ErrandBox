@@ -37,14 +37,14 @@
     text-align: center;
 }
 
-.nav .ant-popover-title{
-    display: none !important;
-}
+
 .errand-type .ant-popover-title{
     display: block !important;
     text-align: center !important;
 }
-
+.nav .ant-popover-title{
+    display: none !important;
+}
 .ant-checkbox-checked .ant-checkbox-inner {
     background-color: #FE5000 !important;
     border-color: #FE5000 !important;

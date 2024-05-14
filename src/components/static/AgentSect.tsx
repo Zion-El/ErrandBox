@@ -8,7 +8,7 @@ import { Overlay } from './CustomerSect'
 const AgentSect = () => {
   return (
     <>
-      <div className='flex flex-col md:flex-row justify-center lg:justify-between gap-8'>
+      <div className='flex flex-col md:flex-row justify-center md:justify-between gap-8 md:overflow-x-scroll lg:overflow-x-hidden'>
         {
           AgentCardData.map((i)=><FlipCard
             title={i.title}
@@ -17,6 +17,7 @@ const AgentSect = () => {
             imgUrl={i.imgUrl}
             border={i.border}
             bgColor={i.bgColor}
+            url='/agent'
             btnText='Become an Agent'
           />)
         }
@@ -30,7 +31,7 @@ const AgentSect = () => {
         <Link to={'/customer-order'}><BasicButton title='Get Started'/></Link>
       </div>
 
-      <div className='hidden md:grid grid-cols-5 gap-6 py-14'>
+      <div className='hidden lg:grid grid-cols-5 gap-6 py-14'>
           <div className='border-b-[3px] border-l-[3px] rounded-[14px] border-[#FE5000] staff'><img src="/png/staff4.png" alt="staff" /><Overlay title={'Daniel Umoh'} position='Founder & CEO'/>
             
           </div>
@@ -46,13 +47,13 @@ const AgentSect = () => {
       </div>
 
       
-      <div className='md:hidden relative pt-16'>            
+      <div className='lg:hidden relative pt-16'>            
         <div className='flex items-end'><img className='w-[50px]' src="/svg/ghost.svg" alt="staff" /></div>
           <div className='w-full flex flex-col justify-center items-center gap-6'>
               <h1 className=' font-[600] lg:w-[50%] lg:font-[500] font-Int text-[18px] lg:text-[24px] leading-[24px] md:leading-[36px]'>Meet the Heroes behind Errandbox!</h1>
               <p className='text-center font-[400] font-Int md:w-[70%] text-[16px]'>We’re a diverse, close-knit team on an adventure to build something enduring, while learning something new, every day.</p>
             </div>
-        <div className='md:hidden grid grid-cols-2 gap-6 py-14'>
+        <div className='lg:hidden grid grid-cols-2 gap-6 py-14'>
           <div>
             <div className='border-b-[3px] border-l-[3px] rounded-[14px] border-[#FE5000] staff'>
               <img src="/png/staff4.png" alt="staff" />

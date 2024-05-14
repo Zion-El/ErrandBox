@@ -7,7 +7,7 @@ import { BasicButton } from '../shared/button'
 const CustomerSect = () => {
   return (
     <>
-      <div className='flex flex-col md:flex-row justify-center lg:justify-between gap-8'>
+      <div className='flex flex-col md:flex-row justify-center md:justify-between gap-8 md:overflow-x-scroll lg:overflow-x-hidden'>
         {
           CustomerCardData.map((i)=><FlipCard
             title={i.title}
@@ -15,15 +15,16 @@ const CustomerSect = () => {
             logoUrl={i.logoUrl}
             imgUrl={i.imgUrl}
             border={i.border}
+            url='/customer-order'
             bgColor={i.bgColor}
             btnText='Start an Errand'
           />)
         }
       </div>    
 
-      <div className='bg-[#CDD3E2] p-4 flex lg:justify-center items-center h-[470px] lg:h-[450px] rounded-lg flex-col relative mt-[2.5rem] lg:mt-[6rem] gap-6 z-[-1]'>
-        <div className='hidden md:block'>
-          <Pill style='top-14 left-10 text-black' title={'Grocery Shopping'} bgColor={'#FFDCCC'}/>
+      <div className='bg-[#CDD3E2] p-4 flex md:justify-center items-center h-[470px] lg:h-[450px] rounded-lg flex-col relative mt-[2.5rem] lg:mt-[6rem] gap-6 z-[-1]'>
+        <div className='hidden lg:block'>
+          <Pill style='top-0 lg:top-14 left-10 text-black' title={'Grocery Shopping'} bgColor={'#FFDCCC'}/>
           <Pill style='left-[8rem] top-[13rem] text-black' title={'Food Shopping'} bgColor={'#CDECE3'}/>
           <Pill style='bottom-14 left-[12rem] text-white' title={'Gift Procurement'} bgColor={'#FE5000'}/>
           <Pill style='top-[6rem] right-[8rem] text-white' title={'Bridal Accessories'} bgColor={'#FE5000'}/>
@@ -37,7 +38,7 @@ const CustomerSect = () => {
         </div>
         <Link to={'/customer-order'}><BasicButton title='Get Started'/></Link>
 
-        <div className='relative md:hidden w-full h-full'>
+        <div className='relative lg:hidden w-full h-full'>
           <Pill style='top-14 right-0 text-black w-[150px]' title={'Grocery Shopping'} bgColor={'#FFDCCC'}/>
           <Pill style='bottom-0 right-0 text-black  w-[150px]' title={'Food Shopping'} bgColor={'#CDECE3'}/>
           <Pill style='top-[11rem] left-16 text-white  w-[150px]' title={'Gift Procurement'} bgColor={'#FE5000'}/>
@@ -48,7 +49,7 @@ const CustomerSect = () => {
 
       </div>
 
-      <div className='hidden md:grid grid-cols-5 gap-6 py-14'>
+      <div className='hidden lg:grid grid-cols-5 gap-6 py-14'>
           <div className='border-b-[3px] border-l-[3px] rounded-[14px] border-[#FE5000] staff'><img src="/png/staff4.png" alt="staff" /><Overlay title={'Daniel Umoh'} position='Founder & CEO'/>
             
           </div>
@@ -64,13 +65,13 @@ const CustomerSect = () => {
       </div>
 
       
-      <div className='md:hidden relative pt-16'>            
+      <div className='lg:hidden relative pt-16'>            
         <div className='flex items-end'><img className='w-[50px]' src="/svg/ghost.svg" alt="staff" /></div>
           <div className='w-full flex flex-col justify-center items-center gap-6'>
               <h1 className=' font-[600] lg:w-[50%] lg:font-[500] font-Int text-[18px] lg:text-[24px] leading-[24px] md:leading-[36px]'>Meet the Heroes behind Errandbox!</h1>
               <p className='text-center font-[400] font-Int md:w-[70%] text-[16px]'>We’re a diverse, close-knit team on an adventure to build something enduring, while learning something new, every day.</p>
             </div>
-        <div className='md:hidden grid grid-cols-2 gap-6 py-14'>
+        <div className='lg:hidden grid grid-cols-2 gap-6 py-14'>
           <div>
             <div className='border-b-[3px] border-l-[3px] rounded-[14px] border-[#FE5000] staff'>
               <img src="/png/staff4.png" alt="staff" />
