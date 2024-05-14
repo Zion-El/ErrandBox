@@ -151,10 +151,10 @@ const AgentForm = () => {
                     </div>  
                         <div className="px-5 md:px-10 lg:px-20 w-full flex flex-col md:flex-row justify-between gap-6 items-center mb-10"> 
                             <div className="w-full lg:w-[45%]">
-                                <ImageUploader/>
+                                <ImageUploader id="ninUpload" title="NIN"/>
                             </div>
                             <div className="w-full lg:w-[45%]">
-                                <ImageUploader/>
+                                <ImageUploader id="passportUpload" title="Passport"/>
                             </div>
 
                         </div>                                   

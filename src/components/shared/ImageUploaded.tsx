@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { BasicButton } from './button';
 
-const ImageUploader: React.FC = () => {
+interface uploadProps{
+  id:string;
+  title?:string
+}
+
+const ImageUploader: React.FC<uploadProps> = ({id, title}) => {
   const [image, setImage] = useState<string | null>(null);
 
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
@@ -56,7 +60,7 @@ const ImageUploader: React.FC = () => {
         <div className='space-y-8'>
 
             <div>
-                <p className='font-Int font-[400] text-[14px] text-[#475367] text-center'><span className='font-Int font-[600]  text-[16px] text-[#FE5000]'>Click to upload your NIN</span> or drag and drop</p>
+                <p className='font-Int font-[400] text-[14px] text-[#475367] text-center'><span className='font-Int font-[600]  text-[16px] text-[#FE5000]'>Click to upload your {title}</span> or drag and drop</p>
                 <p className='font-Int font-[400] text-[12px] text-[#98A2B3] text-center'>DOCX, PDF JPG or (max. 516MB)</p>
             </div>
 
@@ -71,10 +75,10 @@ const ImageUploader: React.FC = () => {
             accept="image/*"
             onChange={handleFileInputChange}
             style={{ display: 'none' }}
-            id="fileInput"
+            id={id}
           />
           <div className='w-full flex justify-center '>
-            <label htmlFor="fileInput" className='bg-[#FE5000] text-[#fff] rounded-lg font-[500] px-8 py-2'>Browse File</label>
+            <label htmlFor={id} className='bg-[#FE5000] text-[#fff] rounded-lg font-[500] px-8 py-2'>Browse File</label>
           </div>
           
         </div>
