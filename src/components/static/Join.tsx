@@ -7,9 +7,9 @@ const Join = () => {
             <Container>
                 <div className='w-full flex justify-center'>
                     <div className='w-full flex justify-center items-center flex-col space-y-7 relative lg:w-[70%]'>
-                    <img src="/svg/smileyboy.svg" alt="star" className="hidden md:block absolute w-16 top-0 left-0"/>
+                    <img src="/svg/smileyboy.svg" alt="star" className=" absolute w-10 md:w-16 top-[-5%] md:top-0 left-0"/>
                     <img src="/svg/6_stars.svg" alt="star" className="hidden md:block absolute w-16 top-0 right-16"/>
-                    <img src="/svg/smileygirl.svg" alt="star" className="hidden md:block absolute w-16 bottom-0 right-0"/>
+                    <img src="/svg/smileygirl.svg" alt="star" className=" absolute w-10 md:w-16 bottom-[10%] md:bottom-0 right-0"/>
 
                         <div className='lg:w-[80%]'>
                             <p className='text-center font-[500] font-Int text-[20px] lg:text-[30px] '>Join Thousands of Users Who Have Discovered the Joy of Errand Freedom!</p>                             

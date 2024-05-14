@@ -42,10 +42,10 @@ const AgentForm = () => {
     const marketOptions = [
         { label: 'Ikeja', value: 'Ikeja' },
         { label: 'Lekki', value: 'Lekki' },
-        { label: 'Gbagada', value: 'Gbagada' },
-        { label: 'Maryland', value: 'Maryland' },
-        { label: 'Sangotedo', value: 'Sangotedo' },
-        { label: 'Surulere', value: 'Surulere' },
+        { label: 'VI', value: 'VI' },
+        { label: 'Ikoyi', value: 'Ikoyi' },
+        { label: 'Ajah', value: 'Ajah' },
+        { label: 'Festac', value: 'Festac' },
       ];
 
     const marketcontent = (
