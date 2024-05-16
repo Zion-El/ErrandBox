@@ -17,8 +17,8 @@ const OneApp = () => {
 
                 </div>
                 <div className='w-full flex justify-center mt-10'>
-                    <ul className='flex overflow-x-scroll md:overflow-x-hidden items-center md:w-[90%] lg:w-[80%] justify-center gap-4 md:gap-10 lg:justify-between'>
-                        {data?.map((i)=><li className='text-center font-[400] font-Int text-[#616161] text-[12px] w-[200px]'><img src={i.imgUrl}  alt="icon" className='inline mr-2 w-[30px] h-[30px]' />{i.name}</li>)}
+                    <ul className='flex overflow-x-scroll md:overflow-x-hidden items-center md:w-[90%] lg:w-[80%] justify-center gap-4 md:gap-10 lg:justify-between relative'>
+                        {data?.map((i)=><li className='text-center font-[400] font-Int text-[#616161] text-[12px] inline-block'><img src={i.imgUrl}  alt="icon" className='inline mr-2 w-[30px] h-[30px]' />{i.name}</li>)}
                             
                     </ul>
                 </div>    
