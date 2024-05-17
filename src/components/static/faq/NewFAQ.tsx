@@ -32,7 +32,7 @@ const faqs: FaqItem[] = [
 	},
 	{
 		title: "WHAT HAPPENS WHEN AN ORDER IS MISSING OR AN INCORRECT PRODUCT IS IN THE ORDER ?",
-		text: "If you received an incomplete or incorrect order, please immediately contact our customer success agent within an hour of delivery. We&#39;ll get back to you with a resolution as soon as possible.",
+		text: "If you received an incomplete or incorrect order, please immediately contact our customer success agent within an hour of delivery. We'll get back to you with a resolution as soon as possible.",
 	},
 
 ];
