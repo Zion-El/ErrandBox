@@ -65,7 +65,7 @@ const AgentForm = () => {
                             name={'firstName'} 
                             value={values.firstName}
                             onChange={handleChange}
-                            placeholder={'John'}
+                            placeholder={'Enter your first name'}
                             error={errors?.firstName}
                         />                
                         <FormInput
@@ -74,7 +74,7 @@ const AgentForm = () => {
                             name={'lastName'} 
                             value={values.lastName}
                             onChange={handleChange}
-                            placeholder={'Doe'}
+                            placeholder={'Enter your last name'}
                             error={errors?.lastName}
                         />       
                         <FormInput
@@ -83,7 +83,7 @@ const AgentForm = () => {
                             name={'address'} 
                             value={values.address}
                             onChange={handleChange}
-                            placeholder={'John'}
+                            placeholder={'Enter your address'}
                             error={errors?.address}
                         />                
                         <FormInput
@@ -92,7 +92,7 @@ const AgentForm = () => {
                             name={'phone'} 
                             value={values.phone}
                             onChange={handleChange}
-                            placeholder={'Doe'}
+                            placeholder={'Enter your phone number'}
                             error={errors?.phone}
                         />       
                         <FormInput
@@ -101,7 +101,7 @@ const AgentForm = () => {
                             name={'email'} 
                             value={values.email}
                             onChange={handleChange}
-                            placeholder={'John'}
+                            placeholder={'Enter your email address'}
                             error={errors?.email}
                         />     
 

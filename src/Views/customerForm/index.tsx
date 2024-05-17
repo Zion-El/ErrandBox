@@ -115,7 +115,7 @@ const CustomerForm = () => {
                     name={"itemType"}
                     value={values.itemType}
                     onChange={handleChange}
-                    placeholder={"John"}
+                    placeholder={"Enter item type"}
                     error={errors?.itemType}
                 />
                 <FormInput
@@ -124,7 +124,7 @@ const CustomerForm = () => {
                     name={"itemCount"}
                     value={values.itemCount}
                     onChange={handleChange}
-                    placeholder={"Doe"}
+                    placeholder={"Enter number of item"}
                     error={errors?.itemCount}
                 />
                 <FormInput
@@ -133,7 +133,7 @@ const CustomerForm = () => {
                     name={"itemCost"}
                     value={values.itemCost}
                     onChange={handleChange}
-                    placeholder={"Doe"}
+                    placeholder={"Enter cost of item"}
                     error={errors?.itemCost}
                 />
 
@@ -231,7 +231,7 @@ const CustomerForm = () => {
                                 name={"firstName"}
                                 value={values.firstName}
                                 onChange={handleChange}
-                                placeholder={"John"}
+                                placeholder={"Enter your first name"}
                                 error={errors?.firstName}
                             />
                             <FormInput
@@ -240,7 +240,7 @@ const CustomerForm = () => {
                                 name={"lastName"}
                                 value={values.lastName}
                                 onChange={handleChange}
-                                placeholder={"Doe"}
+                                placeholder={"Enter your last name"}
                                 error={errors?.lastName}
                             />
                             <FormInput
@@ -249,7 +249,7 @@ const CustomerForm = () => {
                                 name={"address"}
                                 value={values.address}
                                 onChange={handleChange}
-                                placeholder={"John"}
+                                placeholder={"Enter your address"}
                                 error={errors?.address}
                             />
                             <FormInput
@@ -258,7 +258,7 @@ const CustomerForm = () => {
                                 name={"phone"}
                                 value={values.phone}
                                 onChange={handleChange}
-                                placeholder={"Doe"}
+                                placeholder={"Enter your phone number"}
                                 error={errors?.phone}
                             />
                         </div>
@@ -278,7 +278,7 @@ const CustomerForm = () => {
                                 name={'errandName'} 
                                 value={values.errandName}
                                 onChange={handleChange}
-                                placeholder={'John'}
+                                placeholder={'Enter errand name'}
                                 error={errors?.errandName}
                             />    
                         <Popover content={content} title="Select Your Errand Type" className="errand-type">
@@ -289,7 +289,7 @@ const CustomerForm = () => {
                                     name={'errandType'} 
                                     value={values.errandType}
                                     onChange={handleChange}
-                                    placeholder={'Doe'}
+                                    placeholder={'Select errand type'}
                                     error={errors?.errandType}
                                 />                                
                             </div>
@@ -304,7 +304,7 @@ const CustomerForm = () => {
                                     name={'market_loc'} 
                                     value={values.market_loc}
                                     onChange={handleChange}
-                                    placeholder={'Doe'}
+                                    placeholder={'Select market location'}
                                     error={errors?.market_loc}
                                 /> 
                             </div>
