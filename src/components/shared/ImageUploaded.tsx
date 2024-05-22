@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 
-interface uploadProps{
-  id:string;
-  title?:string
+interface UploadProps {
+  id: string;
+  title?: string;
+  onImageUpload: (url: string) => void;
 }
 
-const ImageUploader: React.FC<uploadProps> = ({id, title}) => {
+const ImageUploader: React.FC<UploadProps> = ({ id, title, onImageUpload }) => {
   const [image, setImage] = useState<string | null>(null);
 
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
@@ -35,7 +36,9 @@ const ImageUploader: React.FC<uploadProps> = ({id, title}) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      setImage(reader.result as string);
+      const imageUrl = reader.result as string;
+      setImage(imageUrl);
+      onImageUpload(imageUrl);  // Call the callback with the image URL
     };
   };
 
@@ -58,18 +61,19 @@ const ImageUploader: React.FC<uploadProps> = ({id, title}) => {
         <img src={image} alt="Uploaded" style={{ maxWidth: '100%', maxHeight: '100%' }} />
       ) : (
         <div className='space-y-8'>
+          <div>
+            <p className='font-Int font-[400] text-[14px] text-[#475367] text-center'>
+              <span className='font-Int font-[600]  text-[16px] text-[#FE5000]'>Click to upload your {title}</span> or drag and drop
+            </p>
+            <p className='font-Int font-[400] text-[12px] text-[#98A2B3] text-center'>DOCX, PDF, JPG or (max. 516MB)</p>
+          </div>
 
-            <div>
-                <p className='font-Int font-[400] text-[14px] text-[#475367] text-center'><span className='font-Int font-[600]  text-[16px] text-[#FE5000]'>Click to upload your {title}</span> or drag and drop</p>
-                <p className='font-Int font-[400] text-[12px] text-[#98A2B3] text-center'>DOCX, PDF JPG or (max. 516MB)</p>
-            </div>
+          <div className='flex w-full gap-4 justify-center items-center'>
+            <div className='w-full h-[1px] bg-[#F0F2F5]'></div>
+            <span>OR</span>
+            <div className='w-full h-[1px] bg-[#F0F2F5]'></div>
+          </div>
 
-            <div className='flex w-full gap-4 justify-center items-center'>
-                <div className='w-full h-[1px] bg-[#F0F2F5]'></div>
-                <span>OR</span>
-                <div className='w-full h-[1px] bg-[#F0F2F5]'></div>
-            </div>
-            
           <input
             type="file"
             accept="image/*"
@@ -80,7 +84,6 @@ const ImageUploader: React.FC<uploadProps> = ({id, title}) => {
           <div className='w-full flex justify-center '>
             <label htmlFor={id} className='bg-[#FE5000] text-[#fff] rounded-lg font-[500] px-8 py-2'>Browse File</label>
           </div>
-          
         </div>
       )}
     </div>

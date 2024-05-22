@@ -10,11 +10,14 @@ import { useState } from "react"
 import { Label } from "../../components/shared/typograph"
 import { CheckboxValueType } from "antd/lib/checkbox/Group"
 import ImageUploader from "../../components/shared/ImageUploaded"
+import API from "../../utils/api"
 
 
 const AgentForm = () => {
 
     const [locations, setLocations] = useState< CheckboxValueType[]>([])
+    const [NINUrl, setNINUrl] = useState<string | null>(null);
+    const [passportUrl, setPassportUrl] = useState<string | null>(null);
 
     const initialState = {
         firstName:'',
@@ -24,9 +27,9 @@ const AgentForm = () => {
         email:'',
         location:''
     }
-    const {values, handleChange, 
-        // resetForm, 
-        errors} = useForm(initialState)
+    const { values, handleChange, errors } = useForm(initialState);
+
+
     
     const onChange: GetProp<typeof Checkbox.Group, 'onChange'> = (checkedValues) => {
         setLocations(checkedValues)
@@ -47,13 +50,49 @@ const AgentForm = () => {
         </div>
       );
 
+      const handleNINUpload = (url: string) => {
+        setNINUrl(url);
+      };
+
+      const handlePassportUpload = (url: string) => {
+        setPassportUrl(url);
+      };
+
+      const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+    
+        const payload ={
+            nin : NINUrl,
+            passport: passportUrl,
+            firstName:values.firstName,
+            lastName:values.lastName,
+            phone: values.lastName,
+            email:values.lastName,
+            marketLocations: locations
+        }
+
+            try {
+              const response = await API.post('/errand/order', payload); // Replace with your endpoint
+              console.log(response)
+            //   setData(response.data);
+            } catch (err:any) {
+                console.log(err.message)
+            //   setError(err.message);
+            } 
+            // finally {
+            //   setLoading(false);
+            // }
+
+    };
+    
+
 
   return (
     <MainLayout>
         <FormHero/>
         <Container>
             
-            <form >
+            <form onSubmit={handleSubmit} >
 
                 <div>
                     <FormTag title="Personal Details" desc="This would help us assign an Errand to you. Ensure all details are correct."/>   
@@ -144,10 +183,10 @@ const AgentForm = () => {
                     </div>  
                         <div className=" md:px-10 lg:px-20 w-full flex flex-col md:flex-row justify-between gap-6 items-center mb-10"> 
                             <div className="w-full lg:w-[45%]">
-                                <ImageUploader id="ninUpload" title="NIN"/>
+                                <ImageUploader id="ninUpload" title="NIN" onImageUpload={handleNINUpload}/>
                             </div>
                             <div className="w-full lg:w-[45%]">
-                                <ImageUploader id="passportUpload" title="Passport"/>
+                                <ImageUploader id="passportUpload" title="Passport" onImageUpload={handlePassportUpload}/>
                             </div>
 
                         </div>                                   
