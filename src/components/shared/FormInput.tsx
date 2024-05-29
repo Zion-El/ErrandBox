@@ -13,7 +13,7 @@ type Option = {
 type FormInputProps = {
   type: 'text' | 'email' | 'password' | 'select' | 'date' | 'number';
   name: string;
-  value: string | undefined;
+  value: string | Number | undefined;
   onChange: (e: ChangeEvent<HTMLInputElement> | any) => void; // the event signature might depend on the input type
   placeholder?: string;
   error?: string;
@@ -46,7 +46,7 @@ const FormInput: React.FC<FormInputProps> = ({
           <Label text={label} />
           <select
             name={name}
-            value={value}
+            value={value as string}
             onChange={onChange}
             // placeholder={placeholder}
             onFocus={() => setShowError(true)}
@@ -76,7 +76,7 @@ const FormInput: React.FC<FormInputProps> = ({
           <input
             type="number"
             name={name}
-            value={value as string}
+            value={Number(value)}
             onChange={onChange}
             placeholder={placeholder}
             onFocus={() => setShowError(true)}
@@ -192,7 +192,7 @@ const FormInput: React.FC<FormInputProps> = ({
           <input
             type="text"
             name={name}
-            value={value as string}
+            value={name === 'amount' ?Number(value) : value as string}
             onChange={onChange}
             placeholder={placeholder}
             onFocus={() => setShowError(true)}

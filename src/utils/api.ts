@@ -1,12 +1,17 @@
 // src/axiosInstance.ts
 import axios from 'axios';
 
+const endpoint = import.meta.env.VITE_STAGING_ENDPOINT
 const API = axios.create({
-  baseURL: 'https://errandbox-api.onrender.com/api', // Replace with your API base URL
-  timeout: 1000,
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  baseURL: endpoint, 
+    maxBodyLength: Infinity,
+    maxContentLength: Infinity,
+    // headers: {
+    //   'Content-Type': 'multipart/form-data',
+    // },
+  // headers: {
+  //   
+  // },
 });
 
 export default API;

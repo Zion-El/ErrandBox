@@ -11,13 +11,19 @@ import { Label } from "../../components/shared/typograph"
 import { CheckboxValueType } from "antd/lib/checkbox/Group"
 import ImageUploader from "../../components/shared/ImageUploaded"
 import API from "../../utils/api"
+import BasicModal from "../../components/shared/modal"
+import Loader from "../../components/shared/Loader"
 
 
 const AgentForm = () => {
 
     const [locations, setLocations] = useState< CheckboxValueType[]>([])
-    const [NINUrl, setNINUrl] = useState<string | null>(null);
-    const [passportUrl, setPassportUrl] = useState<string | null>(null);
+    const [NINUrl, setNINUrl] = useState<File | null>(null);
+    const [passportUrl, setPassportUrl] = useState<File | null>(null);
+    const [open, setOpen] = useState<boolean>(false);
+    const [isLoading, setLoading] = useState<boolean>(false);
+
+    // let NINUrl:File;
 
     const initialState = {
         firstName:'',
@@ -50,44 +56,113 @@ const AgentForm = () => {
         </div>
       );
 
-      const handleNINUpload = (url: string) => {
+      const handleNINUpload = (url: File) => {
+        console.log(url)
+        // NINUrl = url
         setNINUrl(url);
       };
 
-      const handlePassportUpload = (url: string) => {
+      const handlePassportUpload = (url: File) => {
         setPassportUrl(url);
       };
+
+
+
+    // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    //     e.preventDefault();
+
+    //     setLoading(true)
+
+
+    //     const requestData = {
+    //         nin : NINUrl,
+    //         passport: passportUrl,
+    //         firstName:values.firstName,
+    //         lastName:values.lastName,
+    //         phone: values.phone,
+    //         email:values.email,
+    //         marketLocations: locations
+    //     }
+
+    //     console.log(requestData)
+
+
+    //     const phoneNumber = import.meta.env.VITE_AGENT_PHONE; 
+        
+    //     try {
+    //         const response = await API.post('/agents/new', requestData); 
+    //         setLoading(false)
+    //         setOpen(true)
+    //         const errand_id = response.data.data.id
+    //         const message = `Hi, my name is ${values.firstName.toUpperCase()} ${values.lastName.toUpperCase()}. I just registered as an agent on ErrandBox. My agent id is ${errand_id}. `; 
+    //         setTimeout(() => {
+    //             const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+    //             window.open(url, '_blank');                
+    //         }, 3000);
+
+    //     } catch (err: any) {
+    //         console.log(err)
+    //         console.log(err.message);
+    //         setLoading(false)
+    //     }
+    // };
+
 
       const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
     
-        const payload ={
-            nin : NINUrl,
-            passport: passportUrl,
-            firstName:values.firstName,
-            lastName:values.lastName,
-            phone: values.lastName,
-            email:values.lastName,
-            marketLocations: locations
+        setLoading(true);
+    
+        const formData = new FormData();
+    
+        if (NINUrl) {
+            formData.append('nin', NINUrl);
+        } else {
+            console.warn('NINUrl is null or undefined');
         }
+    
+        if (passportUrl) {
+            formData.append('passport', passportUrl);
+        } else {
+            console.warn('passportUrl is null or undefined');
+        }
+    
+        formData.append('firstName', values.firstName);
+        formData.append('lastName', values.lastName);
+        formData.append('phone', values.phone);
+        formData.append('email', values.email);
+        formData.append('marketLocations', JSON.stringify(locations));
+    
+        // Log FormData for debugging
 
-            try {
-              const response = await API.post('/errand/order', payload); // Replace with your endpoint
-              console.log(response)
-            //   setData(response.data);
-            } catch (err:any) {
-                console.log(err.message)
-            //   setError(err.message);
-            } 
-            // finally {
-            //   setLoading(false);
-            // }
-
+    
+        const phoneNumber = import.meta.env.VITE_AGENT_PHONE;
+    
+        try {
+            await API.post('/agents/new', formData);
+            setLoading(false);
+            setOpen(true);
+            const message = `Hi, my name is ${values.firstName.toUpperCase()} ${values.lastName.toUpperCase()}. I just registered as an agent on ErrandBox. `;
+            
+            const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+            console.log('here')
+    
+        } catch (err: any) {
+            console.log(err);
+            console.log(err.message);
+            setLoading(false);
+        }
     };
+    
+    
+    
     
 
 
   return (
+    <>
+    {isLoading && <Loader/>}
     <MainLayout>
         <FormHero/>
         <Container>
@@ -199,7 +274,15 @@ const AgentForm = () => {
             </form>
         </Container>
 
+        <BasicModal title={''} openModal={open} handleOk={() => setOpen(false)} handleCancel={() => setOpen(false)}>
+                    <div className="flex justify-center items-center flex-col gap-3 py-20">
+                        <p>Submitted Successfully</p>
+                        <p>Our customer care would reach out to you shortly</p>
+                    </div>
+                </BasicModal>
+
     </MainLayout>
+    </>
   )
 }
 

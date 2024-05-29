@@ -3,7 +3,7 @@ import { useState } from "react";
 interface UploadProps {
   id: string;
   title?: string;
-  onImageUpload: (url: string) => void;
+  onImageUpload: (url: File) => void;
 }
 
 const ImageUploader: React.FC<UploadProps> = ({ id, title, onImageUpload }) => {
@@ -38,7 +38,7 @@ const ImageUploader: React.FC<UploadProps> = ({ id, title, onImageUpload }) => {
     reader.onload = () => {
       const imageUrl = reader.result as string;
       setImage(imageUrl);
-      onImageUpload(imageUrl);  // Call the callback with the image URL
+      onImageUpload(file);  // Call the callback with the image URL
     };
   };
 

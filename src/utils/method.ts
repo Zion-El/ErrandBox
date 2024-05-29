@@ -31,6 +31,31 @@ type FormValues = {
           errors.lastName = 'Last name is required';
         }
       }
+      if ('address' in values) {
+        if (!values.address) {
+          errors.address = 'Address is required';
+        }
+      }
+      if ('phone' in values) {
+        if (!values.phone) {
+          errors.phone = 'Phone is required';
+        }
+      }
+      if ('errandName' in values) {
+        if (!values.errandName) {
+          errors.errandName = 'Errand name is required';
+        }
+      }
+      if ('errandType' in values) {
+        if (!values.errandType) {
+          errors.errandType = 'Errand type is required';
+        }
+      }
+      if ('errandName' in values) {
+        if (!values.errandName) {
+          errors.errandName = 'Errand name is required';
+        }
+      }
   
       // Check email
       if ('email' in values) {
