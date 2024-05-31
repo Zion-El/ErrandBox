@@ -6,7 +6,7 @@ import { Container } from "../../components/shared/container"
 import useForm from "../../hooks/useForm"
 import MainLayout from "../../layout/MainLayout"
 import type { GetProp } from 'antd';
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Label } from "../../components/shared/typograph"
 import { CheckboxValueType } from "antd/lib/checkbox/Group"
 import ImageUploader from "../../components/shared/ImageUploaded"
@@ -14,14 +14,20 @@ import API from "../../utils/api"
 import BasicModal from "../../components/shared/modal"
 import Loader from "../../components/shared/Loader"
 
-
+interface marketListProps {
+    name: string | CheckboxValueType;
+    id: string;
+}
 const AgentForm = () => {
 
     const [locations, setLocations] = useState< CheckboxValueType[]>([])
     const [NINUrl, setNINUrl] = useState<File | null>(null);
     const [passportUrl, setPassportUrl] = useState<File | null>(null);
     const [open, setOpen] = useState<boolean>(false);
+    const [open1, setOpen1] = useState<boolean>(false);
     const [isLoading, setLoading] = useState<boolean>(false);
+    const [marketList, setMarketList] = useState<marketListProps[]>();
+    const [checkedMarket, setCheckedMarket] = useState<string[]>([]);
 
     // let NINUrl:File;
 
@@ -41,20 +47,24 @@ const AgentForm = () => {
         setLocations(checkedValues)
       };
 
-    const marketOptions = [
-        { label: 'Ikeja', value: 'Ikeja' },
-        { label: 'Lekki', value: 'Lekki' },
-        { label: 'VI', value: 'VI' },
-        { label: 'Ikoyi', value: 'Ikoyi' },
-        { label: 'Ajah', value: 'Ajah' },
-        { label: 'Festac', value: 'Festac' },
-      ];
+      const marketOptions = marketList?.map(market => ({
+        label: market.name,
+        value: market.name,
+      }));
 
     const marketcontent = (
         <div className='flex flex-col w-[300px]'>
-            <Checkbox.Group options={marketOptions} onChange={onChange} />
+            <Checkbox.Group className="vertical-checkbox-group" options={marketOptions} onChange={onChange} />
         </div>
       );
+
+
+      useEffect(()=>{
+        const markets = marketList?.filter(market => 
+            locations.some(location => market.name == (location))
+          );
+          setCheckedMarket((markets?.map((i)=>i.id)) ?? [])
+      }, [locations])
 
       const handleNINUpload = (url: File) => {
         console.log(url)
@@ -65,47 +75,6 @@ const AgentForm = () => {
       const handlePassportUpload = (url: File) => {
         setPassportUrl(url);
       };
-
-
-
-    // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    //     e.preventDefault();
-
-    //     setLoading(true)
-
-
-    //     const requestData = {
-    //         nin : NINUrl,
-    //         passport: passportUrl,
-    //         firstName:values.firstName,
-    //         lastName:values.lastName,
-    //         phone: values.phone,
-    //         email:values.email,
-    //         marketLocations: locations
-    //     }
-
-    //     console.log(requestData)
-
-
-    //     const phoneNumber = import.meta.env.VITE_AGENT_PHONE; 
-        
-    //     try {
-    //         const response = await API.post('/agents/new', requestData); 
-    //         setLoading(false)
-    //         setOpen(true)
-    //         const errand_id = response.data.data.id
-    //         const message = `Hi, my name is ${values.firstName.toUpperCase()} ${values.lastName.toUpperCase()}. I just registered as an agent on ErrandBox. My agent id is ${errand_id}. `; 
-    //         setTimeout(() => {
-    //             const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
-    //             window.open(url, '_blank');                
-    //         }, 3000);
-
-    //     } catch (err: any) {
-    //         console.log(err)
-    //         console.log(err.message);
-    //         setLoading(false)
-    //     }
-    // };
 
 
       const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -131,10 +100,7 @@ const AgentForm = () => {
         formData.append('lastName', values.lastName);
         formData.append('phone', values.phone);
         formData.append('email', values.email);
-        formData.append('marketLocations', JSON.stringify(locations));
-    
-        // Log FormData for debugging
-
+        formData.append('marketLocations', JSON.stringify(checkedMarket));
     
         const phoneNumber = import.meta.env.VITE_AGENT_PHONE;
     
@@ -152,14 +118,27 @@ const AgentForm = () => {
             console.log(err);
             console.log(err.message);
             setLoading(false);
+            setOpen1(true)
         }
     };
     
-    
-    
-    
+    useEffect(()=>{
+        const getMarket = async() =>{
+            try {
+                const response = await API.get('/markets'); 
+                const market = response.data.data
+                    setMarketList(market)
 
+                console.log(response);
+            } catch (err: any) {
+                console.log(err)
+                console.log(err.message);
+            }            
+        }
 
+        getMarket()
+
+    }, [])
   return (
     <>
     {isLoading && <Loader/>}
@@ -276,11 +255,18 @@ const AgentForm = () => {
 
         <BasicModal title={''} openModal={open} handleOk={() => setOpen(false)} handleCancel={() => setOpen(false)}>
                     <div className="flex justify-center items-center flex-col gap-3 py-20">
+                        <img src="/svg/success.svg" alt="success" />
                         <p>Submitted Successfully</p>
                         <p>Our customer care would reach out to you shortly</p>
                     </div>
                 </BasicModal>
-
+                <BasicModal title={''} openModal={open1} handleOk={() => setOpen1(false)} handleCancel={() => setOpen1(false)}>
+                    <div className="flex justify-center items-center flex-col gap-3 py-20">
+                        <img src="/svg/success.svg" alt="success" />
+                        <p>Your request was not successful</p>
+                        <p>You can try again</p>
+                    </div>
+                </BasicModal>
     </MainLayout>
     </>
   )

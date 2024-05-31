@@ -35,13 +35,14 @@ const AgentSect = () => {
           <div className='border-b-[3px] border-l-[3px] rounded-[14px] border-[#FE5000] staff'><img src="/png/staff4.png" alt="staff" /><Overlay title={'Daniel Umoh'} position='Founder & CEO'/>
             
           </div>
-          <div className='border-b-[3px] border-l-[3px] rounded-[14px] border-[#FE5000] staff'><img src="/png/staff2.png" alt="staff" /><Overlay title={'Faith Ugbeshe'} position='C0-Founder & COO'/> </div>
+          <div className='border-b-[3px] border-l-[3px] rounded-[14px] border-[#FE5000] staff'><img src="/png/staff2.png" alt="staff" /><Overlay title={'Faith Ugbeshe'} position='Co-Founder & COO'/> </div>
           <div className='col-span-2 '>
             <h1 className=' font-[600] lg:w-[50%] lg:font-[500] font-Int text-[18px] lg:text-[24px] leading-[24px] md:leading-[36px]'>Meet the Heroes behind Errandbox!</h1>
-            <p className='text-left font-[400] font-Int md:w-[70%] text-[16px]'>We’re a diverse, close-knit team on an adventure to build something enduring, while learning something new, every day.</p>
+            <p className='text-left font-[400] font-Int md:w-[75%] text-[16px]'>We’re a diverse, close-knit team on an adventure to build something enduring, while learning something new, every day.</p>
           </div>
           <div className='flex items-end'><img className='w-[100px]' src="/svg/ghost.svg" alt="staff" /></div>
-          <div></div>
+
+          <div className='border-b-[3px] border-l-[3px] rounded-[14px] border-[#FE5000] staff'><img src="/png/staff5.png" alt="staff" /><Overlay title={'James Anih '} position='Co-Founder & CTO'/></div>
           <div className='border-b-[3px] border-l-[3px] rounded-[14px] border-[#FE5000] staff'><img src="/png/staff3.png" alt="staff" /><Overlay title={'Muztir San '} position='CPO'/></div>
           <div className='border-b-[3px] border-l-[3px] rounded-[14px] border-[#FE5000] staff'><img src="/png/staff1.png" alt="staff" /><Overlay title={'Uduak Nkom '} position='CRM'/></div>
       </div>
@@ -65,6 +66,12 @@ const AgentSect = () => {
               <img src="/png/staff2.png" alt="staff" />
             </div>            
             <p className='text-center font-Int font-[500] text-[14px]'>Faith Ugbeshe <span className='text-[#FE5000]'>COO</span></p>
+          </div>
+          <div>
+            <div className='border-b-[3px] border-l-[3px] rounded-[14px] border-[#FE5000] staff'>
+              <img src="/png/staff5.png" alt="staff" />
+            </div>            
+            <p className='text-center font-Int font-[500] text-[14px]'>James Anih <span className='text-[#FE5000]'>CTO</span></p>
           </div>
           <div>
             <div className='border-b-[3px] border-l-[3px] rounded-[14px] border-[#FE5000] staff'>

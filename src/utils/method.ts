@@ -83,6 +83,16 @@ type FormValues = {
           errors.c_password = 'Passwords do not match';
         }
       }
+      if ('amount' in values) {
+        if (!values.amount) {
+          errors.amount = 'Kindly input cost of Item';
+        } else if (values.amount.isNaN()) {
+          errors.amount = 'Your input contains non-numeric values';
+        
+        } else if (Number(values.amount) < 500) {
+          errors.amount = 'You cannot order anything less than #500';
+        }
+      }
     }
   
     return errors;

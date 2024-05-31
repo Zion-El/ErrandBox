@@ -13,7 +13,7 @@ import Loader from "../../components/shared/Loader";
 
 interface ErrandItemProps {
     name: string;
-    quantity: string;
+    quantity: number;
     amount: number;
 }
 interface marketListProps {
@@ -36,13 +36,16 @@ const initialErrand = {
 
 const CustomerForm: FC = () => {
     const [errandList, setErrandList] = useState<ErrandItemProps[]>([
-        { name: "", quantity: "", amount: 0 },
+        { name: "", quantity: 0, amount: 0 },
     ]);
     const [marketList, setMarketList] = useState<marketListProps[]>();
     const [open, setOpen] = useState<boolean>(false);
+    const [open1, setOpen1] = useState<boolean>(false);
     const [isLoading, setLoading] = useState<boolean>(false);
-    const { values, handleChange, errors } = useForm(initialState);
-    const { values: errands, handleChange: handleErrandChange, errors: errandErrors } = useForm(initialErrand);
+    const [errandtype, setErrandType] =  useState<string>('')
+    const [marketLoc, setMarketLoc] =  useState<string>('')
+    const { values, handleChange, errors, resetForm } = useForm(initialState);
+    const { values: errands, handleChange: handleErrandChange, errors: errandErrors, resetForm:errandReset } = useForm(initialErrand);
 
     const onTypeChange = (e: RadioChangeEvent) => {
         handleErrandChange({
@@ -63,7 +66,7 @@ const CustomerForm: FC = () => {
     };
 
     const IncreaseOrderCount = () => {
-        setErrandList([...errandList, { name: "", quantity: "", amount: 0 }]);
+        setErrandList([...errandList, { name: "", quantity: 0, amount: 0 }]);
     };
 
     const DecreaseOrderCount = (index:any) => {
@@ -97,6 +100,16 @@ const CustomerForm: FC = () => {
 
     }, [])
 
+    useEffect(()=>{
+        const type = errandtypeList.find((i)=>i.title === errands.errandType)
+        setErrandType(type?.value ?? '')
+    }, [errands.errandType])
+
+    useEffect(()=>{
+        const loc = marketList?.find((i)=>i.name === errands.market_loc)
+        setMarketLoc(loc?.id ?? '')
+    }, [errands.market_loc])
+
 
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -112,12 +125,12 @@ const CustomerForm: FC = () => {
             phone: values.phone,
             errand: {
                 name: errands.errandName,
-                market: errands.market_loc,
                 errandList: errandList,
-                type: errands.errandType,
+                type: errandtype,
+                ...(marketLoc && { market: marketLoc })
             },
         };
-
+        
         console.log(requestData)
 
 
@@ -138,6 +151,7 @@ const CustomerForm: FC = () => {
             console.log(err)
             console.log(err.message);
             setLoading(false)
+            setOpen1(true)
         }
     };
 
@@ -147,7 +161,7 @@ const CustomerForm: FC = () => {
         <div className='flex flex-col w-[300px]'>
             <Radio.Group onChange={onLocChange} name="market_loc" value={errands.market_loc}>
                 {marketOptions?.map((i, id) => (
-                    <Radio key={id} style={{ padding: '.5rem 0', borderBottom: '1px solid #F3EEEE', width: '100%', marginBottom: '.5rem' }} value={i.id}>
+                    <Radio key={id} style={{ padding: '.5rem 0', borderBottom: '1px solid #F3EEEE', width: '100%', marginBottom: '.5rem' }} value={i.name}>
                         <div>
                             <p className="inline font-Int font-[400] text-[14px]">{i.name}</p>
                         </div>
@@ -160,24 +174,16 @@ const CustomerForm: FC = () => {
     const content = (
         <div className='flex flex-col w-[300px]'>
             <Radio.Group onChange={onTypeChange} value={errands.errandType} name="errandType">
-                <Radio style={{ padding: '.5rem 0' }} value={'daily-pick'}>
-                    <div>
-                        <p className="font-Int font-[500] text-[#101928] text-[16px]">Quick Errands</p>
-                        <p className="font-Int font-[400] text-[#667185] text-[14px]">Your Agent goes on errands close to your location</p>
-                    </div>
-                </Radio>
-                <Radio style={{ padding: '.5rem 0' }} value={'market-runs'}>
-                    <div>
-                        <p className="font-Int font-[500] text-[#101928] text-[16px]">Errand Pickup</p>
-                        <p className="font-Int font-[400] text-[#667185] text-[14px]">Your agent goes on errands to any market location in Lagos</p>
-                    </div>
-                </Radio>
-                <Radio style={{ padding: '.5rem 0' }} value={'follow-Agent'}>
-                    <div>
-                        <p className="font-Int font-[500] text-[#101928] text-[16px]">Errand Assistance</p>
-                        <p className="font-Int font-[400] text-[#667185] text-[14px]">You are assigned an agent to accompany you to the market</p>
-                    </div>
-                </Radio>
+                {
+                    errandtypeList.map((i, id)=>
+                        <Radio key={id} style={{ padding: '.5rem 0' }} value={i.title}>
+                            <div>
+                                <p className="font-Int font-[500] text-[#101928] text-[16px]">{i.title}</p>
+                                <p className="font-Int font-[400] text-[#667185] text-[14px]">{i.desc}</p>
+                            </div>
+                        </Radio>                       
+                    )
+                }
             </Radio.Group>
         </div>
     );
@@ -265,19 +271,23 @@ const CustomerForm: FC = () => {
                                         />
                                     </div>
                                 </Popover>
-                                <Popover content={marketContent} title="Select your Service Area Location" className="errand-type">
-                                    <div>
-                                        <FormInput
-                                            label={'Locations'}
-                                            type={'text'}
-                                            name={'market_loc'}
-                                            value={errands.market_loc}
-                                            onChange={handleErrandChange}
-                                            placeholder={'Select market location'}
-                                            error={errandErrors?.market_loc}
-                                        />
-                                    </div>
-                                </Popover>
+                                {
+                                    errands.errandType && errands.errandType !== 'Quick Errands' &&
+                                    <Popover content={marketContent} title="Select your Service Area Location" className="errand-type">
+                                        <div>
+                                            <FormInput
+                                                label={'Locations'}
+                                                type={'text'}
+                                                name={'market_loc'}
+                                                value={errands.market_loc}
+                                                onChange={handleErrandChange}
+                                                placeholder={'Select market location'}
+                                                error={errandErrors?.market_loc}
+                                            />
+                                        </div>
+                                    </Popover>                                    
+                                }
+
                             </div>
 
                             {errandList.map((item, index) => 
@@ -304,7 +314,7 @@ const CustomerForm: FC = () => {
                                                 label={"Cost of Item"}
                                                 type={"text"}
                                                 name={"amount"}
-                                                value={Number(item.amount)}
+                                                value={item.amount}
                                                 onChange={(e) => handleItemChange(index, e)}
                                                 placeholder={"Enter cost of item"}
                                                 error={errors?.amount}
@@ -346,8 +356,16 @@ const CustomerForm: FC = () => {
 
                 <BasicModal title={''} openModal={open} handleOk={() => setOpen(false)} handleCancel={() => setOpen(false)}>
                     <div className="flex justify-center items-center flex-col gap-3 py-20">
+                        <img src="/svg/success.svg" alt="success" />
                         <p>Submitted Successfully</p>
                         <p>Our customer care would reach out to you shortly</p>
+                    </div>
+                </BasicModal>
+                <BasicModal title={''} openModal={open1} handleOk={() => setOpen1(false)} handleCancel={() => setOpen1(false)}>
+                    <div className="flex justify-center items-center flex-col gap-3 py-20">
+                        <img src="/svg/success.svg" alt="success" />
+                        <p>Your request was not successful</p>
+                        <p>You can try again</p>
                     </div>
                 </BasicModal>
             </MainLayout>        
@@ -357,3 +375,21 @@ const CustomerForm: FC = () => {
 };
 
 export default CustomerForm;
+
+const errandtypeList = [
+    {
+        value: 'daily-pick',
+        title: 'Quick Errands',
+        desc: 'Your Agent goes on errands close to your location'
+    },
+    {
+        value: 'market-runs',
+        title: 'Errand Pickup',
+        desc: 'Your agent goes on errands to any market location in Lagos'
+    },
+    {
+        value: 'follow-Agent',
+        title: 'Errand Assistance',
+        desc: 'You are assigned an agent to accompany you to the market'
+    },
+]
