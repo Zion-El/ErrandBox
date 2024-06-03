@@ -142,6 +142,9 @@ const CustomerForm: FC = () => {
             setOpen(true)
             resetForm()
             errandReset()
+            setErrandList([
+                { name: "", quantity: 0, amount: 0 },
+            ])
             const errand_id = response.data.data.id
             const message = `Hi, my name is ${values.firstName.toUpperCase()} ${values.lastName.toUpperCase()}. I just place an errand order on ErrandBox with errand id - ${errand_id}. `; 
             setTimeout(() => {
