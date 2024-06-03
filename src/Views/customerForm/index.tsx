@@ -140,6 +140,8 @@ const CustomerForm: FC = () => {
             const response = await API.post('/errands/order', requestData); 
             setLoading(false)
             setOpen(true)
+            resetForm()
+            errandReset()
             const errand_id = response.data.data.id
             const message = `Hi, my name is ${values.firstName.toUpperCase()} ${values.lastName.toUpperCase()}. I just place an errand order on ErrandBox with errand id - ${errand_id}. `; 
             setTimeout(() => {

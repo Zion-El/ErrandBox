@@ -39,7 +39,7 @@ const AgentForm = () => {
         email:'',
         location:''
     }
-    const { values, handleChange, errors } = useForm(initialState);
+    const { values, handleChange, errors, resetForm } = useForm(initialState);
 
 
     
@@ -108,6 +108,7 @@ const AgentForm = () => {
             await API.post('/agents/new', formData);
             setLoading(false);
             setOpen(true);
+            resetForm()
             const message = `Hi, my name is ${values.firstName.toUpperCase()} ${values.lastName.toUpperCase()}. I just registered as an agent on ErrandBox. `;
             
             const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
