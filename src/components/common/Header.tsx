@@ -8,7 +8,7 @@ import { Popover } from 'antd';
 
 const Header = () => {
   return (
-    <div className='flex justify-between items-center border py-3 rounded-lg shadow-md px-2'>
+    <div className='flex justify-between items-center border py-3 rounded-lg shadow-sm px-2'>
         <Link to={'/'}><Logo/></Link>
         <div className='hidden md:block'>
           <DropMenu content={navcontent} title='Get Started'/>

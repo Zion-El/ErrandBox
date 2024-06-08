@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <div style={{backgroundImage:'url(/svg/hero-pattern.svg)'}} className=' '>
         <Container>
-            <div className='w-full flex justify-center items-center min-h-screen relative'>
+            <div className='w-full flex justify-center items-center min-h-screen relative pt-[4rem]'>
 
                 <img src="/png/smile.png" className='absolute left-0 md:left-[80%] w-[25px] md:w-[60px]' alt="" />
                 <img src="/svg/doughnut.svg" className='absolute bottom-[30%] left-[-20px] md:left-[25%] w-[25px] md:w-[40px] lg:hidden' alt="" />
@@ -30,7 +30,7 @@ const Hero = () => {
                             <p className='text-[40px] lg:text-[70px] text-[#052370] text-center font-[800] '>Convenience</p>
                         </div>
 
-                        <p className='text-[14px] md:text-[17px] text-[#1D1E20] text-center font-[500]'>Powerful, flexible and stress-free, Errandbox makes it easy to connect you with Agent to provide top-notch services for all your errand needs. </p>
+                        <p className='text-[14px] md:text-[17px] text-[#1D1E20] text-center font-[500] w-full lg:w-[90%] mx-auto'>Powerful, flexible and stress-free, Errandbox makes it easy to connect you with Agent to provide top-notch services for all your errand needs. </p>
                                                 
                     </div>
 
@@ -38,8 +38,8 @@ const Hero = () => {
 
                     <div className="flex justify-center items-center gap-4 md:gap-6 flex-col md:flex-row">
 
-                        <Link to={'/customer-order'} className='w-[60%] md:w-1/2'><BasicButton title='Get Started'/></Link>
-                        <Link to={'/agent'} className='w-[60%] md:w-1/2'><BasicButton title='Become an Agent' style='border' bgColor='white' textColor='#31373D'/></Link>
+                        <Link to={'/customer-order'} className='w-[60%] md:w-1/3'><BasicButton title='Get Started'/></Link>
+                        <Link to={'/agent'} className='w-[60%] md:w-1/3'><BasicButton title='Become an Agent' style='border' bgColor='white' textColor='#31373D'/></Link>
                     </div>
 
                 </div>                

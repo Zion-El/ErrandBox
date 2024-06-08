@@ -29,7 +29,7 @@ const OneApp = () => {
                             <p className='text-center md:text-left font-[500] font-Int text-[20px] lg:text-[28px] leading-[30px]'>We take care of your errands so you can do more</p>
                             <p className='text-center md:text-left font-[400] font-Int mb-8 text-[12px] lg:text-[14px]'>Errandbox connects you with friendly and efficient Agents ready to tackle your market errands, so you can focus on what truly matters.</p>  
                             
-                            <div>
+                            <div className='w-[50%]'>
                                <Link to={'/customer-order'}><BasicButton title='Get Started'/></Link>   
                             </div>
                                                         

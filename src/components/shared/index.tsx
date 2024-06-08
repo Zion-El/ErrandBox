@@ -52,8 +52,8 @@ export const FlipCard = ({title, desc, logoUrl, imgUrl, border, bgColor, btnText
 
             <img className='w-full rounded-[10px] h-[170px]' src={imgUrl} alt="aiit" />
 
-            <div className="w-[60%] md:w-[70%] lg:w-[60%]" >
-                <Link to={url} className="border border-[#616161] px-3 rounded-[16px] py-2 text-[14px] hover:bg-[#FE5000] hover:border-none hover:shadow-lg hover:text-[white] transition-all duration-500 ease-in-out text-[#051235] font-Int font-[500] flex items-center gap-3">{btnText} <span className="inline"><FaChevronRight/></span> </Link>                
+            <div className="w-[60%] md:w-[70%] lg:w-[55%]" >
+                <Link to={url} className="border border-[#616161] px-3 rounded-[20px] py-2 text-[14px] hover:bg-[#052370] hover:border-none hover:shadow-lg hover:text-[white] transition-all duration-500 ease-in-out text-[#051235] font-Int font-[500] flex items-center gap-3">{btnText} <span className="inline"><FaChevronRight/></span> </Link>                
                 {/* <Link to={'/'}><BasicButton style=' border border-[#616161]' px="px-3" radius="rounded-[10px]" bgColor="transparent" textColor="#051235" title='Become an agent >'/></Link>                 */}
             </div>
 
